@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-SecurityTxtFile</command:name>
+      <command:verb>New</command:verb>
+      <command:noun>SecurityTxtFile</command:noun>
+      <maml:description>
+        <maml:para>Creates a "security.txt" file.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet will generate a syntactically-valid "security.txt" file that can be used on web servers.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-SecurityTxtFile</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>OutFile</maml:name>
+          <maml:description>
+            <maml:para>To save the "security.txt" information to a file, specify this parameter with the path of a file.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">File</command:parameterValue>
+          <dev:type>
+            <maml:name>File</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Acknowledgements">
+          <maml:name>Acknowledgments</maml:name>
+          <maml:description>
+            <maml:para>This field indicates a link to a page where security researchers are recognized for their reports.  The page being referenced should list security researchers that reported security vulnerabilities and collaborated to remediate them.  Organizations should be careful to limit the vulnerability information being published in order to prevent future attacks.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Uri, Url">
+          <maml:name>Canonical</maml:name>
+          <maml:description>
+            <maml:para>This field indicates the canonical URIs where the "security.txt" file is located, which is usually something like "https://example.com/.well-known/security.txt".</maml:para>
+            <maml:para>While this field indicates that a "security.txt" retrieved from a given URI is intended to apply to that URI, it MUST NOT be interpreted to apply to all canonical URIs listed within the file. Researchers SHOULD use an additional trust mechanism such as a digital signature (as per Section 3.3) to make the determination that a particular canonical URI is applicable.</maml:para>
+            <maml:para>If this field appears within a "security.txt" file, and the URI used to retrieve that file is not listed within any canonical fields, then the contents of the file SHOULD NOT be trusted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Contact</maml:name>
+          <maml:description>
+            <maml:para>This field indicates an address that researchers should use for reporting security vulnerabilities such as an email address, a phone number and/or a web page with contact information.</maml:para>
+            <maml:para>You may use any URI scheme here except for `http:`.  Some examples include:  - `mailto:` for an email address,  - `tel:` for a phone number,  - `https:` for a contact form or other web page, or  - `MSTeams:` for starting a private Teams chat.</maml:para>
+            <maml:para>The precedence SHOULD be in listed order.  The first occurrence is the preferred method of contact.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>DoNotSign</maml:name>
+          <maml:description>
+            <maml:para>By default, this cmdlet will try to invoke the `gpg` command to sign the "security.txt" file.  If you do not have GnuPG installed, or if you do not wish to sign the file, specify this parameter.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Encryption</maml:name>
+          <maml:description>
+            <maml:para>This field indicates an encryption key that security researchers should use for encrypted communication.  Keys MUST NOT appear in this field - instead the value of this field MUST be a URI pointing to a location where the key can be retrieved.</maml:para>
+            <maml:para>URI schemes commonly used here include:  - `https:` for linking to Web content,  - `dns:` for serving OPENPGPKEY or other DNS records, and  - `openpgp4fpr:` for embedding a key's fingerprint.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Expires</maml:name>
+          <maml:description>
+            <maml:para>This field indicates the date and time after which the data contained in the "security.txt" file is considered stale and should not be used.</maml:para>
+            <maml:para>It is recommended that the value of this field be less than a year into the future to avoid staleness.  In fact, if you do not specify this parameter, this cmdlet will set Expires to exactly one year in the future.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+          <dev:type>
+            <maml:name>DateTime</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Hiring</maml:name>
+          <maml:description>
+            <maml:para>The "Hiring" field is used for linking to the vendor's security-related job positions.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NoHeader</maml:name>
+          <maml:description>
+            <maml:para>By default, this cmdlet will put a header at the top of the file, explaining what the file is, and including a link to this app's GitHub page.  To leave it out, specify this parameter.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Policy</maml:name>
+          <maml:description>
+            <maml:para>This field indicates a link to where the vulnerability disclosure policy is located.  This can help security researchers understand the organization's vulnerability reporting practices.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Languages, Preferred-Languages">
+          <maml:name>PreferredLanguages</maml:name>
+          <maml:description>
+            <maml:para>This field is used to indicate a set of natural languages that are preferred when submitting security reports.  The values within this set are language tags (as defined in RFC 5646).  If this field is absent, security researchers may assume that English is the language to be used.</maml:para>
+            <maml:para>The order in which they are listed is not an indication of priority; the listed languages are intended to have equal priority.</maml:para>
+            <maml:para>For example, if your security response team speaks English, Spanish, and French, you may specify a value of `'en','es','fr'`.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Acknowledgements">
+        <maml:name>Acknowledgments</maml:name>
+        <maml:description>
+          <maml:para>This field indicates a link to a page where security researchers are recognized for their reports.  The page being referenced should list security researchers that reported security vulnerabilities and collaborated to remediate them.  Organizations should be careful to limit the vulnerability information being published in order to prevent future attacks.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Uri, Url">
+        <maml:name>Canonical</maml:name>
+        <maml:description>
+          <maml:para>This field indicates the canonical URIs where the "security.txt" file is located, which is usually something like "https://example.com/.well-known/security.txt".</maml:para>
+          <maml:para>While this field indicates that a "security.txt" retrieved from a given URI is intended to apply to that URI, it MUST NOT be interpreted to apply to all canonical URIs listed within the file. Researchers SHOULD use an additional trust mechanism such as a digital signature (as per Section 3.3) to make the determination that a particular canonical URI is applicable.</maml:para>
+          <maml:para>If this field appears within a "security.txt" file, and the URI used to retrieve that file is not listed within any canonical fields, then the contents of the file SHOULD NOT be trusted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Contact</maml:name>
+        <maml:description>
+          <maml:para>This field indicates an address that researchers should use for reporting security vulnerabilities such as an email address, a phone number and/or a web page with contact information.</maml:para>
+          <maml:para>You may use any URI scheme here except for `http:`.  Some examples include:  - `mailto:` for an email address,  - `tel:` for a phone number,  - `https:` for a contact form or other web page, or  - `MSTeams:` for starting a private Teams chat.</maml:para>
+          <maml:para>The precedence SHOULD be in listed order.  The first occurrence is the preferred method of contact.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>DoNotSign</maml:name>
+        <maml:description>
+          <maml:para>By default, this cmdlet will try to invoke the `gpg` command to sign the "security.txt" file.  If you do not have GnuPG installed, or if you do not wish to sign the file, specify this parameter.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Encryption</maml:name>
+        <maml:description>
+          <maml:para>This field indicates an encryption key that security researchers should use for encrypted communication.  Keys MUST NOT appear in this field - instead the value of this field MUST be a URI pointing to a location where the key can be retrieved.</maml:para>
+          <maml:para>URI schemes commonly used here include:  - `https:` for linking to Web content,  - `dns:` for serving OPENPGPKEY or other DNS records, and  - `openpgp4fpr:` for embedding a key's fingerprint.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Expires</maml:name>
+        <maml:description>
+          <maml:para>This field indicates the date and time after which the data contained in the "security.txt" file is considered stale and should not be used.</maml:para>
+          <maml:para>It is recommended that the value of this field be less than a year into the future to avoid staleness.  In fact, if you do not specify this parameter, this cmdlet will set Expires to exactly one year in the future.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Hiring</maml:name>
+        <maml:description>
+          <maml:para>The "Hiring" field is used for linking to the vendor's security-related job positions.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>NoHeader</maml:name>
+        <maml:description>
+          <maml:para>By default, this cmdlet will put a header at the top of the file, explaining what the file is, and including a link to this app's GitHub page.  To leave it out, specify this parameter.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>OutFile</maml:name>
+        <maml:description>
+          <maml:para>To save the "security.txt" information to a file, specify this parameter with the path of a file.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">File</command:parameterValue>
+        <dev:type>
+          <maml:name>File</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Policy</maml:name>
+        <maml:description>
+          <maml:para>This field indicates a link to where the vulnerability disclosure policy is located.  This can help security researchers understand the organization's vulnerability reporting practices.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri[]</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Languages, Preferred-Languages">
+        <maml:name>PreferredLanguages</maml:name>
+        <maml:description>
+          <maml:para>This field is used to indicate a set of natural languages that are preferred when submitting security reports.  The values within this set are language tags (as defined in RFC 5646).  If this field is absent, security researchers may assume that English is the language to be used.</maml:para>
+          <maml:para>The order in which they are listed is not an indication of priority; the listed languages are intended to have equal priority.</maml:para>
+          <maml:para>For example, if your security response team speaks English, Spanish, and French, you may specify a value of `'en','es','fr'`.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet will pass the "security.txt" data down the pipeline, if `-OutFile` is not used.</maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Void</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet will generate no pipeline output if the `-OutFile` parameter is used.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>While you may use any URI scheme for any parameters that accept URIs, there is one exception:  you must never use an HTTP URI.  Those are verboten by the specification.  When specifying a Web URI, always use HTTPS.</maml:para>
+        <maml:para>Note that the "security.txt" standard is currently in a draft phase, and is subject to change at any time.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; New-SecurityTxtFile -OutFile '.well-known/security.txt' -Canonical "https://contoso.com/.well-known/security.txt" -Contact "mailto:security@contoso.com" -Hiring "https://jobs.contoso.com"</dev:code>
+        <dev:remarks>
+          <maml:para>This will create a "security.txt" file in the .well-known folder in the current directory.  It will have Canonical, Contact, Expires, and Hiring fields inside.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/man/en-US/New-SecurityTxtFile.md</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Test-SecurityTxtFile</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>GitHub</maml:linkText>
+        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)</maml:linkText>
+        <maml:uri>https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Test-SecurityTxtFile</command:name>
+      <command:verb>Test</command:verb>
+      <command:noun>SecurityTxtFile</command:noun>
+      <maml:description>
+        <maml:para>Parses and validates a "security.txt" file.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet will parse a "security.txt" file for completeness and correctness.  You can pass the content of a downloaded "security.txt" file directly into this cmdlet, or give it a domain name and it will download it from the web site.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Test-SecurityTxtFile</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="DomainName, Host, HostName, Name, Uri, Url">
+          <maml:name>Domain</maml:name>
+          <maml:description>
+            <maml:para>To download a "security.txt" file from a web server, specify it here.  The cmdlet will check for this file in the "/.well-known" folder before falling back to the compatibility location ("/").</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Test-SecurityTxtFile</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>To validate an offline "security.txt" file, use this parameter to specify the contents, either explicitly or via the pipeline.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>TestCanonicalUri</maml:name>
+          <maml:description>
+            <maml:para>A previously-downloaded "security.txt" file cannot be verified to ensure that it is canonical.  If you would to test canonicity, specify the complete URL to where the "security.txt" would be if online.  If this URI matches one of the `Canonical` URI's in the "security.txt" file, then it is canonical.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="DomainName, Host, HostName, Name, Uri, Url">
+        <maml:name>Domain</maml:name>
+        <maml:description>
+          <maml:para>To download a "security.txt" file from a web server, specify it here.  The cmdlet will check for this file in the "/.well-known" folder before falling back to the compatibility location ("/").</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>To validate an offline "security.txt" file, use this parameter to specify the contents, either explicitly or via the pipeline.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>TestCanonicalUri</maml:name>
+        <maml:description>
+          <maml:para>A previously-downloaded "security.txt" file cannot be verified to ensure that it is canonical.  If you would to test canonicity, specify the complete URL to where the "security.txt" would be if online.  If this URI matches one of the `Canonical` URI's in the "security.txt" file, then it is canonical.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>When using this cmdlet to download a "security.txt" file from a domain, you may pass in a single string (by property name).</maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>When using this cmdlet to parse a downloaded "security.txt" file, pass the contents into this cmdlet (by value).</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>A hashtable with all of the "security.txt" fields and information will be sent down the pipeline.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>This module is compliant with version 12 of the "security.txt" draft.   Note that this standard is currently in a draft phase, and is subject to change at any time.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Test-SecurityTxtFile -Domain 'securitytxt.org'</dev:code>
+        <dev:remarks>
+          <maml:para>This will download the "security.txt" file for the domain securitytxt.org -- https://securitytxt.org/.well-known/security.txt -- parse it, and check its validity.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Content './Downloads/security.txt' | Test-SecurityTxtFile -TestCanonicalUri 'https://securitytxt.org/.well-known/security.txt'</dev:code>
+        <dev:remarks>
+          <maml:para>If you have already downloaded a "security.txt" file, you can pipe its content into this cmdlet.  To ensure that this file is canonical, you may specify the URL from where it was downloaded.  The latter parameter is optional, though.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/man/en-US/Test-SecurityTxtFile.md</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-SecurityTxtFile</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>GitHub</maml:linkText>
+        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)</maml:linkText>
+        <maml:uri>https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>
