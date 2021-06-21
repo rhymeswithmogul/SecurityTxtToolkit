@@ -1,20 +1,22 @@
+#Requires -Version 5.1
 Set-StrictMode -Version 3.0
 
 Function Test-SecurityTxtFile {
-	[Alias('tsecuritytxt')]
-	[CmdletBinding(DefaultParameterSetName='FromInternet')]
+	[Alias('tsectxt')]
+	[CmdletBinding(DefaultParameterSetName='Online')]
 	[OutputType([PSCustomObject])]
 	Param(
-		[Parameter(ParameterSetName='FromInternet', Position=0)]
+		[Parameter(ParameterSetName='Online', Position=0, ValueFromPipelineByPropertyName)]
 		[Alias('DomainName','Host','HostName','Name','Uri','Url')]
 		[ValidateNotNullOrEmpty()]
 		[String] $Domain,
 
-		[Parameter(ParameterSetName='FromString', Position=0, ValueFromPipeline)]
+		[Parameter(ParameterSetName='Offline', Mandatory, Position=0, ValueFromPipeline)]
+		[AllowNull()]
 		[String[]] $InputObject,
 
-		[Parameter(ParameterSetName='FromString')]
-		[String] $TestCanonicalUri
+		[Parameter(ParameterSetName='Offline', Position=1)]
+		[Uri] $TestCanonicalUri
 	)
 
 	$Return = [PSCustomObject]@{
@@ -33,7 +35,7 @@ Function Test-SecurityTxtFile {
 	}
 
 	#region Get "security.txt" file.
-	If ($PSCmdlet.ParameterSetName -eq 'FromString') {
+	If ($PSCmdlet.ParameterSetName -eq 'Offline') {
 		$securityTxt = $input
 		Write-Debug -Message "Parsing a $($securityTxt.Length)-character string."
 	}
@@ -116,7 +118,7 @@ Function Test-SecurityTxtFile {
 						$Return.IsValid = $false
 					}
 					
-					If (($PSCmdlet.ParameterSetName -eq 'FromInternet' -and $CanonicalUri -eq $WebRequest.BaseResponse.RequestMessage.RequestUri)`
+					If (($PSCmdlet.ParameterSetName -eq 'Online' -and $CanonicalUri -eq $WebRequest.BaseResponse.RequestMessage.RequestUri)`
 						-or ($CanonicalUri -eq $TestCanonicalUri)
 					) {
 						$Return.IsCanonical = $true
@@ -196,6 +198,10 @@ Function Test-SecurityTxtFile {
 		Write-Error -Message 'A matching Canonical field was not found.  This file should not be trusted for this domain.'
 		# However, we're not going to call the file invalid.
 	}
+	If ($null -eq $Return.Contact) {
+		Write-Error -Message 'The mandatory Contact field was not found.'
+		$Return.IsValid = $false
+	}
 	If ($null -eq $Return.Expires) {
 		Write-Error -Message 'The mandatory Expires field was not found.'
 		$Return.IsValid = $false
@@ -215,7 +221,7 @@ Function Test-SecurityTxtFile {
 }
 
 Function New-SecurityTxtFile {
-	[Alias('nsecuritytxt', 'Set-SecurityTxtFile', 'ssecuritytxt')]
+	[Alias('nsectxt', 'Set-SecurityTxtFile', 'ssectxt')]
 	[OutputType([String], ParameterSetName='ToPipeline')]
 	[OutputType([void],   ParameterSetName='ToFile')]
 	Param(
@@ -225,15 +231,17 @@ Function New-SecurityTxtFile {
 		[Alias('Acknowledgements')]
 		[Uri[]] $Acknowledgments,
 		
-		[Parameter(Mandatory)]
 		[Alias('Uri','Url')]
 		[ValidateNotNullOrEmpty()]
 		[Uri[]] $Canonical,
 		
+		[Parameter(Mandatory)]
+		[ValidateNotNullOrEmpty()]
 		[Uri[]] $Contact,
 		
 		[Uri[]] $Encryption,
 		
+		[ValidateNotNullOrEmpty()]
 		[DateTime] $Expires,
 
 		[Uri[]] $Hiring,
@@ -243,23 +251,17 @@ Function New-SecurityTxtFile {
 		[Alias('Languages', 'Preferred-Languages')]
 		[String[]] $PreferredLanguages,
 
-		[Switch] $NoHeader,
-
 		[Switch] $DoNotSign
 	)
 
-	$Lines = @()
-
-	If (-Not $NoHeader) {
-		$Lines = @(
-			'# This is a "security.txt" file that complies with draft-foudil-securitytxt-12:'
-			'# <https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt-12>'
-			'#',
-			'# This file was made with SecurityTxtToolkit:',
-			'# <https://github.com/rhymeswithmogul/security-txt-toolkit>',
-			''
-		)
-	}
+	$Lines = @(
+		'# This is a "security.txt" file that complies with draft-foudil-securitytxt-12:'
+		'# <https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt-12>'
+		'#',
+		'# This file was made with SecurityTxtToolkit:',
+		'# <https://github.com/rhymeswithmogul/security-txt-toolkit>',
+		''
+	)
 
 	ForEach ($value in $Acknowledgments) {
 		$Lines += "Acknowledgments: $value"

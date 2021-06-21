@@ -56,8 +56,9 @@ VariablesToExport = ''
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @(
 	'Set-SecurityTxtFile',
-	'nsecuritytxt',
-	'ssecuritytxt'
+	'nsectxt',
+	'ssectxt',
+	'tsectxt'
 )
 
 # List of all files packaged with this module
@@ -67,6 +68,9 @@ FileList = @(
 	'NEWS',
 	'README.md',
 	'SecurityTxtToolkit.psd1',
+	'en-US/SecurityTxtToolkit-help.xml',
+	'man/en-US/New-SecurityTxtFile.md',
+	'man/en-US/Test-SecurityTxtFile.md',
 	'src/SecurityTxtToolkit.psm1'
 )
 
@@ -76,7 +80,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'txt')
+        Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/LICENSE'
@@ -97,7 +101,7 @@ PrivateData = @{
         RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        # ExternalModuleDependencies = @()
+        ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
 
