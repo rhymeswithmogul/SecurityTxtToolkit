@@ -33,7 +33,7 @@ Description = 'Parses and creates "security.txt" files.'
 PowerShellVersion = '5.1'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('Microsoft.PowerShell.Utility')
+RequiredModules = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
@@ -100,7 +100,7 @@ PrivateData = @{
         RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        ExternalModuleDependencies = @()
+        ExternalModuleDependencies = @('Microsoft.PowerShell.Utility')
 
     } # End of PSData hashtable
 
