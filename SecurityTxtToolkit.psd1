@@ -68,9 +68,8 @@ FileList = @(
 	'NEWS',
 	'README.md',
 	'SecurityTxtToolkit.psd1',
+	'en-US/about_SecurityTxtToolkit.help.txt',
 	'en-US/SecurityTxtToolkit-help.xml',
-	'man/en-US/New-SecurityTxtFile.md',
-	'man/en-US/Test-SecurityTxtFile.md',
 	'src/SecurityTxtToolkit.psm1'
 )
 

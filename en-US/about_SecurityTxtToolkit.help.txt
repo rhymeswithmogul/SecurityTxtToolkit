@@ -1,0 +1,181 @@
+﻿TOPIC
+    about_SecurityTxtToolkit
+
+SHORT DESCRIPTION
+    SecurityTxtToolkit is a module that works with "security.txt" files.
+
+LONG DESCRIPTION
+    SecurityTxtToolkit is a PowerShell module.   It can create, download, test,
+    and verify "security.txt" files.  "security.txt" is a draft RFC for letting
+    web sites post and share information pertinent to security researchers.
+
+TESTING "SECURITY.TXT" FILES WITH TEST-SECURITYTXTFILE
+    To test a "security.txt" file, use the cmdlet Test-SecurityTxtFile.  It can
+    be used in both online and offline modes.  It outputs a PSCustomObject that
+    has note-properties corresponding to the fields in the "security.txt" file.
+    
+    There are other properties, including IsValid and IsCanonical, which aren't
+    part of the "security.txt" specification, but may help with your scripting.
+    If "security.txt" is directly fetched by the cmdlet, then canonicity checks
+    are done; however, if you test an offline file or pipeline input, you can't
+    test for canonicity.  Thus, this cmdlet has a parameter, -TestCanonicalUri,
+    that can be used to verify that the given URI is present in the "Canonical"
+    fields.
+    
+    For more information:  Get-Help Test-SecurityTxtFile
+
+GENERATING YOUR OWN "SECURITY.TXT" FILES
+    The New-SecurityTxtFile cmdlet will generate a "security.txt" file, sending
+    its output to the pipeline. You may redirect it via standard means, or with
+    the -OutFile parameter.   The fields in the "security.txt" specification do
+    correspond to this cmdlet's parameters.
+    
+    For more information:  Get-Help New-SecurityTxtFile
+
+EXAMPLES
+    1. TESTING AN ACTIVE SERVER
+
+    Testing an online "security.txt" file is simple:
+        PS C:\> Test-SecurityTxtFile 'github.com'
+    
+    As of this writing (June 2021), that will generate the following output:
+
+        Test-SecurityTxtFile: The mandatory Expires field was not found.
+
+        For                : github.com
+        IsValid            : False
+        IsCanonical        : True
+        Acknowledgements   : {https://bounty.github.com/bounty-hunters.html}
+        Canonical          : {https://github.com/.well-known/security.txt}
+        Contact            : {https://hackerone.com/github}
+        Encryption         : {}
+        Expires            :
+        Hiring             : {}
+        Policy             : {https://bounty.github.com/}
+        PreferredLanguages : {en}
+        IsSigned           : False
+    
+    It looks like GitHub's "security.txt" file is not compliant with the latest
+    version of the draft specification!
+
+
+    2. TESTING A DOWNLOADED OR GENERATED FILE
+    
+    The Test-SecurityTxtFile cmdlet also accepts string input via -InputObject. 
+    The cmdlet runs identically whether its input come down the pipeline, or it
+    be specified as a parameter.
+
+    In this example, assume the user has downloaded a web site's "security.txt"
+    file to their computer:
+        PS C:\> Get-Content "security.txt" | Test-SecurityTxtFile
+
+    That will test the file and validate its input:
+        For                : stdin
+        IsValid            : False
+        IsCanonical        : False
+        Acknowledgements   : {https://bounty.github.com/bounty-hunters.html}
+        Canonical          : {https://github.com/.well-known/security.txt}
+        Contact            : {https://hackerone.com/github}
+        Encryption         : {}
+        Expires            :
+        Hiring             : {}
+        Policy             : {https://bounty.github.com/}
+        PreferredLanguages : {en}
+        IsSigned           : False
+
+    However, that cannot be validated for canonicity. In this case, you can add
+    the file's original URL to the cmdlet with the -TestCanonicalUri parameter:
+        PS C:\> Invoke-WebRequest -OutFile 'security.txt' -Uri `
+        >> 'https://github.com/.well-known/security.txt'
+
+        PS C:\> Get-Content 'security.txt' | Test-SecurityTxtFile `
+        >> -TestCanonicalUri 'https://github.com/.well-known/security.txt'
+
+    The latter command will parse the previously-downloaded "security.txt" file
+    as if it had been fetched directly from a web server. Do note "IsCanonical"
+    has changed values now that the parameter has been specified.
+
+        For                : stdin
+        IsValid            : False
+        IsCanonical        : True
+        Acknowledgements   : {https://bounty.github.com/bounty-hunters.html}
+        Canonical          : {https://github.com/.well-known/security.txt}
+        Contact            : {https://hackerone.com/github}
+        Encryption         : {}
+        Expires            :
+        Hiring             : {}
+        Policy             : {https://bounty.github.com/}
+        PreferredLanguages : {en}
+        IsSigned           : False
+
+
+    3. GENERATING YOUR OWN "SECURITY.TXT" FILE
+
+    Here's how to generate a "security.txt" file:
+        PS C:\> New-SecurityTxtFile -OutFile '.well-known/security.txt' `
+        >> -Canonical "https://contoso.com/.well-known/security.txt" `
+        >> -Contact "mailto:security@contoso.com" `
+        >> -Hiring "https://jobs.contoso.com"
+    
+    That example will genereate the following output. The Expires field and PGP
+    signature will vary:
+        -----BEGIN PGP SIGNED MESSAGE-----
+        Hash: SHA256
+
+        # This is a "security.txt" file that complies with draft-foudil-securitytxt-12:
+        # <https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt-12>
+        #
+        # This file was made with SecurityTxtToolkit:
+        # <https://github.com/rhymeswithmogul/security-txt-toolkit>
+
+        Canonical: https://contoso.com/.well-known/security.txt
+        Contact: mailto:security@contoso.com
+        Expires: 2022-06-18T16:41:06-04:00
+        Hiring: https://jobs.contoso.com/
+
+        -----BEGIN PGP SIGNATURE-----
+
+        iQIzBAEBCAAdFiEERASZ7KOR4ZiNgtKI5kd5lzggeCMFAmDNBOIACgkQ5kd5lzgg
+        eCOk7RAAurcGjYdp9jMfWqMxe/PgEXlHkjCdYCBWveN0M9oNw4a3OGtj5GvZUGHQ
+        gP9N296lsADUHlAUC/WS4gFt0No4GIdftl5RUvkr4nDkbE7S7kDpqQTtytZ7kBag
+        liQQtdGt6Uy/nxtQjpBQxMH086sh4ve5lflrhCcWlj7LlLau+Rd7UhlGy1wOxqSV
+        t1o7Muo1ho9Y37UmStzkYblpYo1APjZI7NNooyjjwP+sgafZrcFylEGfOJWGhDmd
+        pV280fH62T6A7pz3zYOJl0o1fNNegwm1JrKWSnvpGngPWBVZolD2mU0Y80NfxQ2L
+        fkkTHISISJUSTANEXAMPLEHASH+BUTITDEMONSTRATESWHATOUTPUTYOUGETnnoH
+        j92m99QgesvnNZWpUDnv+TeBIlBGjqdTo7Uvm2g2L5+ALyJGTiTDQ5vOMsotRsgC
+        9G022eL1RvvjmIMUTk80Ci0+nFZGtZU4GMCLLndH/Lc7Wa6JcwjVT+kTbcP3Maip
+        FLVYWehglSmzyjlvLtp5aMSZ1iaRiY3KDC/pq0F5T359jCQt5p6vYyoJNQ2Ga1nw
+        lDVmDYvhrukMbfLYGmu9PMpKpghVlADm1DzLlMqm1Hr9IYr6BAr0tHTuGklXWJF+
+        3m6PRpkx4bGcymReObVZRjqq/RMplctBGTV6doshd+wM9EqsGhI=
+        =7zfS
+        -----END PGP SIGNATURE-----
+
+NOTE
+    If you have GnuPG installed, the New-SecurityTxtFile will attempt to clear-
+    sign the generated file.  Installing that and configuring a default PGP key
+    is beyond the scope of this contextual help and left as an exercise for the
+    PowerSheller.
+
+TROUBLESHOOTING NOTE
+    This module complies with draft #12 of the future RFC.   The "security.txt"
+    spec is in active development and subject to change. Be sure to update this
+    module regularly and frequently.
+
+SEE ALSO
+    Read the help for this module's cmdlets:
+     - New-SecurityTxtFile (nsectxt)
+     - Test-SecurityTxtFile (tsectxt)
+
+    For more information about "security.txt" files in general, the creators of
+    the specification, Edwin "EdOverflow" Foudil and Yakov Shafranovich, have a
+    web page at https://securitytxt.org.
+
+    This module is in no way affiliated with them or the project. But, if you'd
+    like to contribute to its development, it's on GitHub:
+    https://github.com/rhymeswithmogul/security-txt-toolkit
+
+KEYWORDS
+- New-SecurityTxtFile
+- nsectxt
+- Test-SecurityTxtFile
+- tsectxt
