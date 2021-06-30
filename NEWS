@@ -1,3 +1,8 @@
+Version 1.0.1 -- June 22, 2021
+------------------------------
+This version fixed a packaging error when uploading the previous version to the
+PowerShell Gallery.  There are no new features or bug fixes.
+
 Version 1.0.0 -- June 22, 2021
 ------------------------------
 This is the first public release of SecurityTxtToolkit.  While this version can
