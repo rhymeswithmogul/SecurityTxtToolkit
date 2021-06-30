@@ -120,7 +120,7 @@ EXAMPLES
     That example will genereate the following output. The Expires field and PGP
     signature will vary:
         -----BEGIN PGP SIGNED MESSAGE-----
-        Hash: SHA256
+        Hash: SHA512
 
         # This is a "security.txt" file that complies with draft-foudil-securitytxt-12:
         # <https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt-12>
@@ -135,19 +135,10 @@ EXAMPLES
 
         -----BEGIN PGP SIGNATURE-----
 
-        iQIzBAEBCAAdFiEERASZ7KOR4ZiNgtKI5kd5lzggeCMFAmDNBOIACgkQ5kd5lzgg
-        eCOk7RAAurcGjYdp9jMfWqMxe/PgEXlHkjCdYCBWveN0M9oNw4a3OGtj5GvZUGHQ
-        gP9N296lsADUHlAUC/WS4gFt0No4GIdftl5RUvkr4nDkbE7S7kDpqQTtytZ7kBag
-        liQQtdGt6Uy/nxtQjpBQxMH086sh4ve5lflrhCcWlj7LlLau+Rd7UhlGy1wOxqSV
-        t1o7Muo1ho9Y37UmStzkYblpYo1APjZI7NNooyjjwP+sgafZrcFylEGfOJWGhDmd
-        pV280fH62T6A7pz3zYOJl0o1fNNegwm1JrKWSnvpGngPWBVZolD2mU0Y80NfxQ2L
-        fkkTHISISJUSTANEXAMPLEHASH+BUTITDEMONSTRATESWHATOUTPUTYOUGETnnoH
-        j92m99QgesvnNZWpUDnv+TeBIlBGjqdTo7Uvm2g2L5+ALyJGTiTDQ5vOMsotRsgC
-        9G022eL1RvvjmIMUTk80Ci0+nFZGtZU4GMCLLndH/Lc7Wa6JcwjVT+kTbcP3Maip
-        FLVYWehglSmzyjlvLtp5aMSZ1iaRiY3KDC/pq0F5T359jCQt5p6vYyoJNQ2Ga1nw
-        lDVmDYvhrukMbfLYGmu9PMpKpghVlADm1DzLlMqm1Hr9IYr6BAr0tHTuGklXWJF+
-        3m6PRpkx4bGcymReObVZRjqq/RMplctBGTV6doshd+wM9EqsGhI=
-        =7zfS
+        iHUEARYKAB0WIQQ7NZ6ap/Bjr/sGU4FSrfh98PoTfwUCYNvzBwAKCRBSrfh98PoT
+        f8siAP9hOryAzTmjXC7zfEwoz/JwypS8aN+c1rqdFDFt9w8DoAEA30rxuhQDv56v
+        bCbTyst2GEBxCy8b1+2fs0iF9WQVWws=
+        =Wzju
         -----END PGP SIGNATURE-----
 
 NOTE
