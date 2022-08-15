@@ -1,3 +1,5 @@
+[![PowerShell Gallery Version (including pre-releases)](https://img.shields.io/powershellgallery/v/SecurityTxtToolkit?include_prereleases)](https://powershellgallery.com/packages/SecurityTxtToolkit/) [![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/SecurityTxtToolkit)](https://powershellgallery.com/packages/v/SecurityTxtToolkit)
+
 # SecurityTxtToolkit
 
 ## DOWNLOAD IT!
@@ -7,7 +9,7 @@ Install-Module SecurityTxtToolkit
 ```
 
 ## SHORT DESCRIPTION
-SecurityTxtToolkit is a module that works with "security.txt" files.
+SecurityTxtToolkit is a module that works with "security.txt" files, as defined in RFC 9116.
 
 ## LONG DESCRIPTION
 SecurityTxtToolkit is a PowerShell module.   It can create, download, test, and verify "security.txt" files.
