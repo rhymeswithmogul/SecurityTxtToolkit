@@ -221,6 +221,7 @@ Function Test-SecurityTxtFile {
 }
 
 Function New-SecurityTxtFile {
+	[CmdletBinding(SupportsShouldProcess, ConfirmImpact='Low')]
 	[Alias('nsectxt', 'Set-SecurityTxtFile', 'ssectxt')]
 	[OutputType([String], ParameterSetName='ToPipeline')]
 	[OutputType([void],   ParameterSetName='ToFile')]
@@ -316,7 +317,7 @@ Function New-SecurityTxtFile {
 		}
 		Start-Process @SigningProcess
 
-		If ($PSCmdlet.ParameterSetName -eq 'ToFile') {
+		If ($PSCmdlet.ParameterSetName -eq 'ToFile' -and $PSCmdlet.ShouldProcess($OutFile, 'Create clear-signed file')) {
 			Move-Item -Path $SignedFile -Destination $OutFile
 		}
 		Else {
@@ -324,7 +325,7 @@ Function New-SecurityTxtFile {
 		}
 	}
 	Catch {
-		If ($PSCmdlet.ParameterSetName -eq 'ToFile') {
+		If ($PSCmdlet.ParameterSetName -eq 'ToFile' -and $PSCmdlet.ShouldProcess($OutFile, 'Create unsigned file')) {
 			Set-Content -Path $OutFile -Value $FileContent -Encoding utf8
 		}
 		Else {
