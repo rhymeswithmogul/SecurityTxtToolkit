@@ -15,7 +15,7 @@ Creates a "security.txt" file.
 ```
 New-SecurityTxtFile [[-OutFile] <File>] [-Acknowledgments <Uri[]>] [-Canonical <Uri[]>] -Contact <Uri[]>
  [-Encryption <Uri[]>] [-Expires <DateTime>] [-Hiring <Uri[]>] [-Policy <Uri[]>]
- [-PreferredLanguages <String[]>] [-NoHeader] [-DoNotSign] [<CommonParameters>]
+ [-PreferredLanguages <String[]>] [-DoNotSign] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,21 +157,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoHeader
-By default, this cmdlet will put a header at the top of the file, explaining what the file is, and including a link to this app's GitHub page.  To leave it out, specify this parameter.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -OutFile
 To save the "security.txt" information to a file, specify this parameter with the path of a file.
 
@@ -222,6 +207,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -234,7 +249,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 This cmdlet will pass the "security.txt" data down the pipeline, if `-OutFile` is not used.
 
-
 ### System.Void
 This cmdlet will generate no pipeline output if the `-OutFile` parameter is used.
 
@@ -244,6 +258,7 @@ While you may use any URI scheme for any parameters that accept URIs, there is o
 Note that the "security.txt" standard is currently in a draft phase, and is subject to change at any time.
 
 ## RELATED LINKS
+
 [Test-SecurityTxtFile](Test-SecurityTxtFile)
 [GitHub](https://github.com/rhymeswithmogul/security-txt-toolkit)
 [A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)](https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt)
