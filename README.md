@@ -14,7 +14,7 @@ SecurityTxtToolkit is a module that works with "security.txt" files, as defined 
 ## LONG DESCRIPTION
 SecurityTxtToolkit is a PowerShell module.   It can create, download, test, and verify "security.txt" files.
 
-"security.txt" is a draft RFC for letting  web sites post and share information pertinent to security researchers.  This module currently complies with draft version 12.
+"security.txt" is an RFC for letting  web sites post and share information pertinent to security researchers.  This module currently complies with draft version 12.
 
 ### Testing "security.txt" Files with `Test-SecurityTxtFile`
 To test a "security.txt" file, use the cmdlet `Test-SecurityTxtFile`.  It can be used in both online and offline modes.  It outputs a `PSCustomObject` that has note-properties corresponding to the fields in the "security.txt" file:
@@ -41,7 +41,7 @@ PreferredLanguages : {en}
 IsSigned           : False
 ```
 
-It looks like GitHub's "security.txt" file is not compliant with the latest version of the draft specification!
+It looks like GitHub's "security.txt" file is not compliant with the specification (at the time of this writing)!
 
 The `Test-SecurityTxtFile` cmdlet also accepts string input via `-InputObject` or the pipeline:
 ```powershell
@@ -120,3 +120,5 @@ bCbTyst2GEBxCy8b1+2fs0iF9WQVWws=
 
 ## SEE ALSO
 For more information about "security.txt" files in general, the creators of the specification, Edwin "EdOverflow" Foudil and Yakov Shafranovich, have a web page at https://securitytxt.org.  This module might be listed on their web site, but I'm not affiliated with them.
+
+Why not read [my article about this](https://colincogle.name/blog/security-txt) to see it in action?
