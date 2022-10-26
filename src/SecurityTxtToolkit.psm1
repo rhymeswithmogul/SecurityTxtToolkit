@@ -56,14 +56,11 @@ Function Test-SecurityTxtFile {
 			"http://$Domain/.well-known/security.txt",
 			"http://$Domain/security.txt")
 		) {
-			Try {
-				Write-Verbose "Downloading $Uri"
-				$WebRequest = Invoke-WebRequest @Params -Uri $Uri
-				If ($WebRequest.StatusCode -eq 200) {
-					Break
-				}
+			Write-Verbose "Downloading $Uri"
+			$WebRequest = Invoke-WebRequest @Params -Uri $Uri -ErrorAction SilentlyContinue
+			If ($WebRequest.StatusCode -eq 200) {
+				Break
 			}
-			Catch {}
 		}
 		If (-Not $WebRequest -Or -Not $WebRequest.BaseResponse.IsSuccessStatusCode) {
 			Write-Error -Message "No `"security.txt`" file was found at $Domain."

@@ -1,3 +1,7 @@
+Version 1.1.0 -- October 25, 2022
+---------------------------------
+This version adds ShouldProcess support to New-SecurityTxtFile.
+
 Version 1.0.1 -- June 22, 2021
 ------------------------------
 This version fixed a packaging error when uploading the previous version to the

@@ -12,7 +12,7 @@
 RootModule = 'src/SecurityTxtToolkit.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = @('Desktop', 'Core')
@@ -24,7 +24,7 @@ GUID = '151cd72c-ea6c-42a7-8db4-0adde7f7a7c1'
 Author = 'Colin Cogle <colin@colincogle.name>'
 
 # Copyright statement for this module
-Copyright = '(c) 2021 Colin Cogle.  All rights reserved.  Licensed under the AGPLv3 or newer.'
+Copyright = '(c) 2021-2022 Colin Cogle.  All rights reserved.  Licensed under the AGPLv3 or newer.'
 
 # Description of the functionality provided by this module
 Description = 'Parses and creates "security.txt" files.'
@@ -64,6 +64,7 @@ AliasesToExport = @(
 # List of all files packaged with this module
 FileList = @(
 	'AUTHORS',
+    'CHANGELOG.md',
 	'LICENSE',
 	'NEWS',
 	'README.md',
