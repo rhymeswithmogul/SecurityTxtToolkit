@@ -80,7 +80,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt')
+        Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty', 'bounty')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/LICENSE'
@@ -92,7 +92,7 @@ PrivateData = @{
         #IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'First release'
+        ReleaseNotes = 'Maintenance release'
 
         # Prerelease string of this module
         #Prerelease = ''
