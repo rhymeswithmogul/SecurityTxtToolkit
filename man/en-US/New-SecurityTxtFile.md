@@ -258,7 +258,7 @@ While you may use any URI scheme for any parameters that accept URIs, there is o
 Note that the "security.txt" standard is currently in a draft phase, and is subject to change at any time.
 
 ## RELATED LINKS
-
+[Get-SecurityTxtFile](Get-SecurityTxtFile)
 [Test-SecurityTxtFile](Test-SecurityTxtFile)
 [GitHub](https://github.com/rhymeswithmogul/security-txt-toolkit)
 [A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)](https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt)

@@ -1,5 +1,62 @@
 #Requires -Version 5.1
 Set-StrictMode -Version 3.0
+New-Variable -Scope 'Script' -Name 'UserAgent' -Option 'Constant' -Value 'SecurityTxtToolkit/1.2 (https://github.com/rhymeswithmogul/security-txt-toolkit)'
+
+Function Get-SecurityTxtFile {
+	[Alias('gsectxt')]
+	[OutputType([String])]
+	Param(
+		[Parameter(Mandatory, Position=0, ValueFromPipelineByPropertyName)]
+		[Alias('DomainName','Host','HostName','Name','Uri','Url')]
+		[ValidateNotNullOrEmpty()]
+		[String] $Domain
+	)
+
+	# Below are the parameters we will be using for Invoke-WebRequest.
+	$Params = @{
+		'Method'          = 'GET'
+		'UseBasicParsing' = $true
+		'UserAgent'       = $script:UserAgent
+	}
+
+	$WebRequest = $null
+	ForEach ($Uri in @(
+		"https://$Domain/.well-known/security.txt",
+		"https://$Domain/security.txt",
+		"http://$Domain/.well-known/security.txt",
+		"http://$Domain/security.txt")
+	) {
+		Write-Verbose "Downloading $Uri"
+		$WebRequest = Invoke-WebRequest @Params -Uri $Uri -ErrorAction SilentlyContinue
+		If ($null -ne $WebRequest -and $WebRequest.StatusCode -eq 200) {
+			Break
+		}
+	}
+	If (-Not $WebRequest -Or -Not $WebRequest.BaseResponse.IsSuccessStatusCode) {
+		Write-Error -Message "No `"security.txt`" file was found at $Domain."
+		Return $null
+	}
+
+	If ($WebRequest.BaseResponse.RequestMessage.RequestUri.Scheme -eq 'http') {
+		Write-Warning -Message "The `"security.txt`" file for $Domain could not be downloaded via HTTPS."
+	}
+
+	If ($WebRequest.BaseResponse.RequestMessage.RequestUri.AbsolutePath -eq 'security.txt') {
+		Write-Warning -Message "The `"security.txt`" file for $Domain was found in the root folder, but not in the .well-known folder."
+	}
+
+	# Check to make sure this file was served via HTTP 1.0 or higher.
+	If ($WebRequest.RawContent.Substring(0,6) -Cne 'HTTP/1') {
+		Write-Warning -Message "The `"security.txt`" file for $Domain was not downloaded by HTTP 1.0 or newer."
+	}
+
+	# Check to make sure that this file has the correct content type.
+	If ($WebRequest.Headers.'Content-Type' -NotMatch 'text\/plain(;\s*charset=[Uu][Tt][Ff]-8)?') {
+		Write-Warning -Message "The `"security.txt`" file for $Domain was served with the incorrect MIME type."
+	}
+
+	Return $WebRequest.Content
+}
 
 Function Test-SecurityTxtFile {
 	[Alias('tsectxt')]
@@ -43,11 +100,10 @@ Function Test-SecurityTxtFile {
 		$Return.For = $Domain
 
 		# Below are the parameters we will be using for Invoke-WebRequest.
-		$this   = Get-Module 'SecurityTxtToolkit'
 		$Params = @{
 			'Method'          = 'GET'
 			'UseBasicParsing' = $true
-			'UserAgent'       = "$($this.Name)/$($this.Version) (https://github.com/rhymeswithmogul/security-txt-toolkit)'
+			'UserAgent'       = $script:UserAgent
 		}
 
 		$WebRequest = $null

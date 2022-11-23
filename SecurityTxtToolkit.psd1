@@ -12,7 +12,7 @@
 RootModule = 'src/SecurityTxtToolkit.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1.1'
+ModuleVersion = '1.2'
 
 # Supported PSEditions
 CompatiblePSEditions = @('Desktop', 'Core')
@@ -44,7 +44,8 @@ RequiredModules = @()
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @(
 	'Test-SecurityTxtFile',
-	'New-SecurityTxtFile'
+	'New-SecurityTxtFile',
+    'Get-SecurityTxtFile'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -58,7 +59,8 @@ AliasesToExport = @(
 	'Set-SecurityTxtFile',
 	'nsectxt',
 	'ssectxt',
-	'tsectxt'
+	'tsectxt',
+    'gsectxt'
 )
 
 # List of all files packaged with this module
@@ -92,7 +94,7 @@ PrivateData = @{
         #IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Maintenance release'
+        ReleaseNotes = 'Introducing Get-SecurityTxtFile -- fetch a file without testing it.'
 
         # Prerelease string of this module
         #Prerelease = ''

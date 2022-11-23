@@ -1,3 +1,8 @@
+Version 1.2.0 -- November 23, 2022
+----------------------------------
+This version adds a new cmdlet, Get-SecurityTxtFile!  There are also a few bug
+fixes as well.
+
 Version 1.1.0 -- October 25, 2022
 ---------------------------------
 This version adds ShouldProcess support to New-SecurityTxtFile.

@@ -1,6 +1,7 @@
 # SecurityTxtToolkit change log
 
-## Version 1.1.1 (November 23, 2022)
+## Version 1.2 (November 23, 2022)
+- Add the cmdlet `Get-SecurityTxtFile`.
 - Fixed the user agent so that it shows the current version.
 
 ## Version 1.1 (October 25, 2022)
