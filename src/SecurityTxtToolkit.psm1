@@ -1,5 +1,4 @@
 #Requires -Version 5.1
-Set-StrictMode -Version 3.0
 New-Variable -Scope 'Script' -Name 'UserAgent' -Option 'Constant' -Value 'SecurityTxtToolkit/1.2 (https://github.com/rhymeswithmogul/security-txt-toolkit)'
 
 Function Get-SecurityTxtFile {
