@@ -173,10 +173,32 @@ Function Test-SecurityTxtFile {
 						$Return.IsValid = $false
 					}
 					
-					If (($PSCmdlet.ParameterSetName -eq 'Online' -and $CanonicalUri -eq $WebRequest.BaseResponse.RequestMessage.RequestUri)`
-						-or ($CanonicalUri -eq $TestCanonicalUri)
-					) {
-						$Return.IsCanonical = $true
+					# We will check for canonicity by testing against both the
+					# $Uri parameter and the URI used to request this resource
+					# (i.e., after an HTTP 301 redirects).  The RFC leaves the
+					# behavior intentionally vague, so we will leave the final
+					# decision up to the human instead of the code.
+					# See https://github.com/securitytxt/security-txt/issues/217
+					#
+					# If we have already established canonicity, we don't need
+					# to continue checking URIs.  Some "security.txt" files may
+					# have a lot of them.
+					If (-Not $Return.IsCanonical) {
+						Write-Verbose "The URL requested was: $Uri"
+						Write-Verbose "The URL used was:      $($WebRequest.BaseResponse.RequestMessage.RequestUri)"
+						Write-Verbose "This Canonical URL is: $canonicalUri"
+						If ($PSCmdlet.ParameterSetName -eq 'Offline') {
+							Write-Verbose "The testing URL is:  $TestCanonicalUri"
+						}
+						If (($PSCmdlet.ParameterSetName -eq 'Online' -and (
+								$CanonicalUri -eq $Uri -or
+								$CanonicalUri -eq $WebRequest.BaseResponse.RequestMessage.RequestUri
+							)) `
+							-or $CanonicalUri -eq $TestCanonicalUri
+						) {
+							Write-Verbose "^^ MATCHED!"
+							$Return.IsCanonical = $true
+						}
 					}
 					$Return.Canonical += $CanonicalUri
 				}

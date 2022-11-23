@@ -3,6 +3,8 @@ Version 1.3.0 -- November 23, 2022
 This version adds support for verifying PGP-signed "security.txt" files.  You
 must have GnuPG installed;  PowerShell cannot provide this for you.
 
+Canonicity is now a little more lax, to comply with the RFC.
+
 Version 1.2.0 -- November 23, 2022
 ----------------------------------
 This version adds a new cmdlet, Get-SecurityTxtFile!  There are also a few bug

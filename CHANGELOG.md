@@ -2,6 +2,7 @@
 
 ## Version 1.3.0
 - Add support for verifying digitally-signed "security.txt" files, if GnuPG is available.
+- Made improvements to determining whether or not a file is canonical for a given URL.  The RFC leaves it intentionally vague, so `IsCanonical` is now set if it matches *either* the request URI or the user-supplied URI.
 
 ## Version 1.2.0 (November 23, 2022)
 - Add the cmdlet `Get-SecurityTxtFile`.
