@@ -43,10 +43,11 @@ Function Test-SecurityTxtFile {
 		$Return.For = $Domain
 
 		# Below are the parameters we will be using for Invoke-WebRequest.
+		$this   = Get-Module 'SecurityTxtToolkit'
 		$Params = @{
 			'Method'          = 'GET'
 			'UseBasicParsing' = $true
-			'UserAgent'       = 'SecurityTxtToolkit/1.0 (https://github.com/rhymeswithmogul/security-txt-toolkit)'
+			'UserAgent'       = "$($this.Name)/$($this.Version) (https://github.com/rhymeswithmogul/security-txt-toolkit)'
 		}
 
 		$WebRequest = $null
