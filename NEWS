@@ -1,3 +1,8 @@
+Version 1.3.1 -- November 23, 2022
+----------------------------------
+One little change made this module compatible with Windows PowerShell 5.1.
+Previously, it could have been installed, but would not have fetched any files.
+
 Version 1.3.0 -- November 23, 2022
 ----------------------------------
 This version adds support for verifying PGP-signed "security.txt" files.  You

@@ -1,7 +1,10 @@
 # SecurityTxtToolkit change log
 
-## Version 1.3.0
-- Add support for verifying digitally-signed "security.txt" files, if GnuPG is available.
+## Version 1.3.1 (November 23, 2022) -- I had a busy day.
+- Fixed a bug preventing this module from working on Windows PowerShell 5.1.  The `[HTTPWebRequest].BaseResponse.IsSuccessStatusCode` property was not supported when running under the .NET Framework.
+
+## Version 1.3.0 (November 23, 2022)
+- Added support for verifying digitally-signed "security.txt" files, if GnuPG is available.
 - Made improvements to determining whether or not a file is canonical for a given URL.  The RFC leaves it intentionally vague, so `IsCanonical` is now set if it matches *either* the request URI or the user-supplied URI.
 
 ## Version 1.2.0 (November 23, 2022)

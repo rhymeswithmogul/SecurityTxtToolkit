@@ -31,7 +31,7 @@ Function Get-SecurityTxtFile {
 			Break
 		}
 	}
-	If (-Not $WebRequest -Or -Not $WebRequest.BaseResponse.IsSuccessStatusCode) {
+	If (-Not $WebRequest -Or $WebRequest.StatusCode -NotLike '2*') {
 		Write-Error -Message "No `"security.txt`" file was found at $Domain."
 		Return $null
 	}
@@ -120,7 +120,7 @@ Function Test-SecurityTxtFile {
 				Break
 			}
 		}
-		If (-Not $WebRequest -Or -Not $WebRequest.BaseResponse.IsSuccessStatusCode) {
+		If (-Not $WebRequest -Or $WebRequest.StatusCode -NotLike '2*') {
 			Write-Error -Message "No `"security.txt`" file was found at $Domain."
 			Return $null
 		}
