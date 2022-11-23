@@ -105,10 +105,10 @@ When using this cmdlet to parse a downloaded "security.txt" file, pass the conte
 A hashtable with all of the "security.txt" fields and information will be sent down the pipeline.
 
 ## NOTES
-This module is compliant with version 12 of the "security.txt" draft.   Note that this standard is currently in a draft phase, and is subject to change at any time.
 
 ## RELATED LINKS
+
 [Get-SecurityTxtFile](Get-SecurityTxtFile)
 [New-SecurityTxtFile](New-SecurityTxtFile)
 [GitHub](https://github.com/rhymeswithmogul/security-txt-toolkit)
-[A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)](https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt)
+[RFC 9116: A File Format to Aid in Security Vulnerability Disclosure](https://www.rfc-editor.org/rfc/rfc9116)

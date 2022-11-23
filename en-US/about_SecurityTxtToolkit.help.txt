@@ -6,8 +6,8 @@ SHORT DESCRIPTION
 
 LONG DESCRIPTION
     SecurityTxtToolkit is a PowerShell module.   It can create, download, test,
-    and verify "security.txt" files.  "security.txt" is a draft RFC for letting
-    web sites post and share information pertinent to security researchers.
+    and verify "security.txt" files.  Standardized as RFC 9116, this allows web
+    sites post and share information pertinent to security researchers.
 
 TESTING "SECURITY.TXT" FILES WITH TEST-SECURITYTXTFILE
     To test a "security.txt" file, use the cmdlet Test-SecurityTxtFile.  It can
@@ -157,12 +157,11 @@ NOTE
     PowerSheller.
 
 TROUBLESHOOTING NOTE
-    This module complies with draft #12 of the future RFC.   The "security.txt"
-    spec is in active development and subject to change. Be sure to update this
-    module regularly and frequently.
+    This module complies with RFC 9116.
 
 SEE ALSO
     Read the help for this module's cmdlets:
+     - Get-SecurityTxtFile (gsectxt)
      - New-SecurityTxtFile (nsectxt)
      - Test-SecurityTxtFile (tsectxt)
 
@@ -175,6 +174,9 @@ SEE ALSO
     https://github.com/rhymeswithmogul/security-txt-toolkit
 
 KEYWORDS
+- RFC 9116
+- Get-SecurityTxtFile
+- gsectxt
 - New-SecurityTxtFile
 - nsectxt
 - Test-SecurityTxtFile

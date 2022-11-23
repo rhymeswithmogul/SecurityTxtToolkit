@@ -255,10 +255,9 @@ This cmdlet will generate no pipeline output if the `-OutFile` parameter is used
 ## NOTES
 While you may use any URI scheme for any parameters that accept URIs, there is one exception:  you *must never* use an HTTP URI.  Those are verboten by the specification.  When specifying a Web URI, always use HTTPS.
 
-Note that the "security.txt" standard is currently in a draft phase, and is subject to change at any time.
-
 ## RELATED LINKS
+
 [Get-SecurityTxtFile](Get-SecurityTxtFile)
 [Test-SecurityTxtFile](Test-SecurityTxtFile)
 [GitHub](https://github.com/rhymeswithmogul/security-txt-toolkit)
-[A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)](https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt)
+[RFC 9116: A File Format to Aid in Security Vulnerability Disclosure](https://www.rfc-editor.org/rfc/rfc9116)

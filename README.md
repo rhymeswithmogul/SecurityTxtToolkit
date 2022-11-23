@@ -14,7 +14,7 @@ SecurityTxtToolkit is a module that works with "security.txt" files, as defined 
 ## LONG DESCRIPTION
 SecurityTxtToolkit is a PowerShell module.   It can create, download, test, and verify "security.txt" files.
 
-"security.txt" is an RFC for letting  web sites post and share information pertinent to security researchers.  This module currently complies with draft version 12.
+"security.txt" is an RFC for letting web sites post and share information pertinent to security researchers.  This module currently complies with draft version 12.
 
 ### Testing "security.txt" Files with `Test-SecurityTxtFile`
 To test a "security.txt" file, use the cmdlet `Test-SecurityTxtFile`.  It can be used in both online and offline modes.  It outputs a `PSCustomObject` that has note-properties corresponding to the fields in the "security.txt" file:
@@ -98,8 +98,8 @@ That example will genereate the following output. The Expires field and PGP sign
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA512
 
-# This is a "security.txt" file that complies with draft-foudil-securitytxt-12:
-# <https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt-12>
+# This is a "security.txt" file that complies with RFC 9116:
+# <https://www.rfc-editor.org/rfc/rfc9116>
 #
 # This file was made with SecurityTxtToolkit:
 # <https://github.com/rhymeswithmogul/security-txt-toolkit>
@@ -111,10 +111,7 @@ Hiring: https://jobs.contoso.com/
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQQ7NZ6ap/Bjr/sGU4FSrfh98PoTfwUCYNvzBwAKCRBSrfh98PoT
-f8siAP9hOryAzTmjXC7zfEwoz/JwypS8aN+c1rqdFDFt9w8DoAEA30rxuhQDv56v
-bCbTyst2GEBxCy8b1+2fs0iF9WQVWws=
-=Wzju
+signature-goes-here
 -----END PGP SIGNATURE-----
 ```
 

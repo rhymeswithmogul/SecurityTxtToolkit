@@ -310,8 +310,8 @@ Function New-SecurityTxtFile {
 	)
 
 	$Lines = @(
-		'# This is a "security.txt" file that complies with draft-foudil-securitytxt-12:'
-		'# <https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt-12>'
+		'# This is a "security.txt" file that complies with RFC 9116:'
+		'# <https://www.rfc-editor.org/rfc/rfc9116>'
 		'#',
 		'# This file was made with SecurityTxtToolkit:',
 		'# <https://github.com/rhymeswithmogul/security-txt-toolkit>',

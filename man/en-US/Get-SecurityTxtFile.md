@@ -60,4 +60,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Test-SecurityTxtFile](Test-SecurityTxtFile)
 [GitHub](https://github.com/rhymeswithmogul/security-txt-toolkit)
-[A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)](https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt)
+[RFC 9116: A File Format to Aid in Security Vulnerability Disclosure](https://www.rfc-editor.org/rfc/rfc9116)

@@ -91,8 +91,8 @@
         <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)</maml:linkText>
-        <maml:uri>https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt</maml:uri>
+        <maml:linkText>RFC 9116: A File Format to Aid in Security Vulnerability Disclosure</maml:linkText>
+        <maml:uri>https://www.rfc-editor.org/rfc/rfc9116</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -447,7 +447,6 @@
     <maml:alertSet>
       <maml:alert>
         <maml:para>While you may use any URI scheme for any parameters that accept URIs, there is one exception:  you must never use an HTTP URI.  Those are verboten by the specification.  When specifying a Web URI, always use HTTPS.</maml:para>
-        <maml:para>Note that the "security.txt" standard is currently in a draft phase, and is subject to change at any time.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -477,8 +476,8 @@
         <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)</maml:linkText>
-        <maml:uri>https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt</maml:uri>
+        <maml:linkText>RFC 9116: A File Format to Aid in Security Vulnerability Disclosure</maml:linkText>
+        <maml:uri>https://www.rfc-editor.org/rfc/rfc9116</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -606,7 +605,7 @@
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>This module is compliant with version 12 of the "security.txt" draft.   Note that this standard is currently in a draft phase, and is subject to change at any time.</maml:para>
+        <maml:para></maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -631,7 +630,7 @@
         <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/man/en-US/Test-SecurityTxtFile.md</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-SecurityTxtfile</maml:linkText>
+        <maml:linkText>Get-SecurityTxtFile</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
@@ -643,8 +642,8 @@
         <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>A File Format to Aid in Security Vulnerability Disclosure (draft-foudil-securitytxt-12)</maml:linkText>
-        <maml:uri>https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt</maml:uri>
+        <maml:linkText>RFC 9116: A File Format to Aid in Security Vulnerability Disclosure</maml:linkText>
+        <maml:uri>https://www.rfc-editor.org/rfc/rfc9116</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
