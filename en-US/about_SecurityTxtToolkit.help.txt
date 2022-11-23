@@ -54,6 +54,8 @@ EXAMPLES
         Policy             : {https://bounty.github.com/}
         PreferredLanguages : {en}
         IsSigned           : False
+        IsSignedBy         : {}
+        HasGoodSignature   : False
     
     It looks like GitHub's "security.txt" file is not compliant with the latest
     version of the draft specification!
@@ -82,6 +84,8 @@ EXAMPLES
         Policy             : {https://bounty.github.com/}
         PreferredLanguages : {en}
         IsSigned           : False
+        IsSignedBy         : {}
+        HasGoodSignature   : False
 
     However, that cannot be validated for canonicity. In this case, you can add
     the file's original URL to the cmdlet with the -TestCanonicalUri parameter:
@@ -107,6 +111,8 @@ EXAMPLES
         Policy             : {https://bounty.github.com/}
         PreferredLanguages : {en}
         IsSigned           : False
+        IsSignedBy         : {}
+        HasGoodSignature   : False
 
 
     3. GENERATING YOUR OWN "SECURITY.TXT" FILE
@@ -151,10 +157,12 @@ EXAMPLES
         -----END PGP SIGNATURE-----
 
 NOTE
-    If you have GnuPG installed, the New-SecurityTxtFile will attempt to clear-
-    sign the generated file.  Installing that and configuring a default PGP key
-    is beyond the scope of this contextual help and left as an exercise for the
-    PowerSheller.
+    If you have GnuPG installed, two more things will happen:
+      1. The New-SecurityTxtFile will attempt to clear-sign the generated file.
+      2. The Test-SecurityTxtFile will attempt to verify the signature.
+
+    Installing that and creating a PGP keypair and/or keychain is beyond the
+    scope of this contextual help and left as an exercise for the PowerSheller.
 
 TROUBLESHOOTING NOTE
     This module complies with RFC 9116.
@@ -181,3 +189,4 @@ KEYWORDS
 - nsectxt
 - Test-SecurityTxtFile
 - tsectxt
+- GnuPG

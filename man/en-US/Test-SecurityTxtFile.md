@@ -105,6 +105,7 @@ When using this cmdlet to parse a downloaded "security.txt" file, pass the conte
 A hashtable with all of the "security.txt" fields and information will be sent down the pipeline.
 
 ## NOTES
+To verify a clear-signed file, GnuPG must be installed on your computer and be available in your $env:PATH.  If this is not available, signatures will be detected but not checked for validity.
 
 ## RELATED LINKS
 

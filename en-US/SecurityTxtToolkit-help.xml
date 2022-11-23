@@ -605,7 +605,7 @@
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para></maml:para>
+        <maml:para>To verify a clear-signed file, GnuPG must be installed on your computer and be available in your $env:PATH.  If this is not available, signatures will be detected but not checked for validity.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

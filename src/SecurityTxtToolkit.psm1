@@ -1,5 +1,5 @@
 #Requires -Version 5.1
-New-Variable -Scope 'Script' -Name 'UserAgent' -Option 'Constant' -Value 'SecurityTxtToolkit/1.2 (https://github.com/rhymeswithmogul/security-txt-toolkit)'
+New-Variable -Scope 'Script' -Name 'UserAgent' -Option 'Constant' -Value 'SecurityTxtToolkit/1.3.0 (https://github.com/rhymeswithmogul/security-txt-toolkit)'
 
 Function Get-SecurityTxtFile {
 	[Alias('gsectxt')]
@@ -88,6 +88,8 @@ Function Test-SecurityTxtFile {
 		'Policy' = @()
 		'PreferredLanguages' = @()
 		'IsSigned' = $false
+		'IsSignedBy' = $null
+		'HasGoodSignature' = $false
 	}
 
 	#region Get "security.txt" file.
@@ -260,13 +262,47 @@ Function Test-SecurityTxtFile {
 		$Return.IsValid = $false
 	}
 
-	# We can't assume that the user will have the GnuPG tools installed, so we're just going
-	# to check for the existence of something that looks like a signature and call it a day.
-	# Validating the signature is an exercise left to the reader.
-	#
-	# TODO: figure out how to validate the signature.
-	If ($securityTxt -Match 'BEGIN PGP SIGNED MESSAGE') {
-		$Return.IsSigned = $true
+	$GnuPGApp = (Get-Command -Name 'gpg' | Select-Object -First 1)
+	If ($null -ne $GnuPGApp) {
+		Try {
+			$VerifyStdInFile  = New-TemporaryFile
+			$VerifyStdoutFile = New-TemporaryFile
+			$VerifyStderrFile = New-TemporaryFile
+			Set-Content -Path $VerifyStdinFile -Value $SecurityTxt
+
+			$SigningProcess = @{
+				'FilePath' = $GnuPGApp.Source
+				'ArgumentList' = '--verify'
+				'LoadUserProfile' = $true	# to use the user's $env:GNUPGHOME
+				'RedirectStandardInput'  = $VerifyStdinFile
+				'RedirectStandardError'  = $VerifyStderrFile
+				'RedirectStandardOutput' = $VerifyStdoutFile
+				'Wait' = $true
+			}
+			Start-Process @SigningProcess
+
+			# On my system, `gpg --verify` emits to stderr.  Not sure why.
+			# Just in case it emits to stdout on your system, we'll pull from
+			# the stdout file in case stderr is blank.
+			$VerifyResults = Get-Content $VerifyStderrFile
+			Write-Debug "Error stream from gpg:  $VerifyResults"
+			If ($null -eq $VerifyResults) {
+				$VerifyResults = Get-Content $VerifyStdoutFile
+				Write-Debug "Error stream null.  Switching to output stream:  $VerifyResults"
+			}
+
+			$Return.IsSigned = $null -ne (Select-String -InputObject $VerifyResults -Pattern 'signature from')
+			If ($Return.IsSigned) {
+				$Return.IsSignedBy = ($VerifyResults -Replace 'gpg:\s*','')
+			}
+			$Return.HasGoodSignature = $null -ne (Select-String -InputObject $VerifyResults -Pattern 'good signature from')
+		}
+		Finally {
+			Remove-Item -Path $VerifyStdinFile  -Force -ErrorAction Ignore
+			Remove-Item -Path $VerifyStdoutFile -Force -ErrorAction Ignore
+			Remove-Item -Path $VerifyStderrFile -Force -ErrorAction Ignore
+		}
+
 	}
 	#endregion
 

@@ -12,7 +12,7 @@
 RootModule = 'src/SecurityTxtToolkit.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.2'
+ModuleVersion = '1.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = @('Desktop', 'Core')
@@ -82,7 +82,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty', 'bounty')
+        Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty', 'bounty', 'gpg')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/LICENSE'
