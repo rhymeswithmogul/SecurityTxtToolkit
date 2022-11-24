@@ -1,5 +1,8 @@
 Not yet released
 ----------------
+The new Save-SecurityTxtFile cmdlet will allow you to download a website's
+"security.txt" file.
+
 What is a "security.txt" file anyway?  You can read the full specification by
 typing in:  Get-Help about_SecurityTxt
 

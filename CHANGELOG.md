@@ -1,6 +1,7 @@
 # SecurityTxtToolkit change log
 
 ## Not yet released
+-  Add a new cmdlet, `Save-SecurityTxtFile`, to simply download a "security.txt" file.
 -  Include RFC 9116 in here as `about_SecurityTxt`.
 
 ## Version 1.3.1 (November 23, 2022) -- I had a busy day.

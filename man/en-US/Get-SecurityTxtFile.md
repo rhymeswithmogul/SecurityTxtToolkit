@@ -17,7 +17,7 @@ Get-SecurityTxtFile [-Domain] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet fetches a domain's "security.txt" file from the well-known location, as well as from the legacy /security.txt location.  For testing purposes, it can also fetch over HTTP, but the user will be warned.  No post-processing is done on the file.
+This cmdlet fetches a domain's "security.txt" file from the well-known location, as well as from the legacy /security.txt location.  For testing purposes, it can also fetch over HTTP, but the user will be warned.  No post-processing is done on the file, and it is displayed on the screen.
 
 ## EXAMPLES
 
@@ -51,9 +51,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+One or more domain names.
+
 ## OUTPUTS
 
 ### System.String
+A website's "security.txt" file is shown on the screen, and can be passed down the pipeline.
+
 ## NOTES
 
 ## RELATED LINKS

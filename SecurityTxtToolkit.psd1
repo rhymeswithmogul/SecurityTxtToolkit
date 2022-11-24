@@ -12,7 +12,7 @@
 RootModule = 'src/SecurityTxtToolkit.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.3.1'
+ModuleVersion = '1.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = @('Desktop', 'Core')
@@ -45,7 +45,8 @@ RequiredModules = @()
 FunctionsToExport = @(
 	'Test-SecurityTxtFile',
 	'New-SecurityTxtFile',
-    'Get-SecurityTxtFile'
+	'Get-SecurityTxtFile',
+	'Save-SecurityTxtFile'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -60,13 +61,13 @@ AliasesToExport = @(
 	'nsectxt',
 	'ssectxt',
 	'tsectxt',
-    'gsectxt'
+	'gsectxt'
 )
 
 # List of all files packaged with this module
 FileList = @(
 	'AUTHORS',
-    'CHANGELOG.md',
+	'CHANGELOG.md',
 	'LICENSE',
 	'NEWS',
 	'README.md',
@@ -80,33 +81,33 @@ FileList = @(
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
 
-    PSData = @{
+	PSData = @{
 
-        # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty', 'bounty', 'gpg')
+		# Tags applied to this module. These help with module discovery in online galleries.
+		Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty', 'bounty', 'gpg')
 
-        # A URL to the license for this module.
-        LicenseUri = 'https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/LICENSE'
+		# A URL to the license for this module.
+		LicenseUri = 'https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/LICENSE'
 
-        # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/rhymeswithmogul/SecurityTxtToolkit'
+		# A URL to the main website for this project.
+		ProjectUri = 'https://github.com/rhymeswithmogul/SecurityTxtToolkit'
 
-        # A URL to an icon representing this module.
-        #IconUri = ''
+		# A URL to an icon representing this module.
+		#IconUri = ''
 
-        # ReleaseNotes of this module
-        ReleaseNotes = 'Introducing Get-SecurityTxtFile -- fetch a file without testing it.'
+		# ReleaseNotes of this module
+		ReleaseNotes = 'Introducing Get-SecurityTxtFile -- fetch a file without testing it.'
 
-        # Prerelease string of this module
-        #Prerelease = ''
+		# Prerelease string of this module
+		#Prerelease = ''
 
-        # Flag to indicate whether the module requires explicit user acceptance for install/update/save
-        RequireLicenseAcceptance = $false
+		# Flag to indicate whether the module requires explicit user acceptance for install/update/save
+		RequireLicenseAcceptance = $false
 
-        # External dependent modules of this module
-        ExternalModuleDependencies = @('Microsoft.PowerShell.Utility')
+		# External dependent modules of this module
+		ExternalModuleDependencies = @('Microsoft.PowerShell.Utility')
 
-    } # End of PSData hashtable
+	} # End of PSData hashtable
 
 } # End of PrivateData hashtable
 

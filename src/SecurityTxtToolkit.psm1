@@ -1,5 +1,5 @@
 #Requires -Version 5.1
-New-Variable -Scope 'Script' -Name 'UserAgent' -Option 'Constant' -Value 'SecurityTxtToolkit/1.3.0 (https://github.com/rhymeswithmogul/SecurityTxtToolkit)'
+New-Variable -Scope 'Script' -Name 'UserAgent' -Option 'Constant' -Value 'SecurityTxtToolkit/1.4.0 (https://github.com/rhymeswithmogul/SecurityTxtToolkit)'
 
 Function Get-SecurityTxtFile {
 	[Alias('gsectxt')]
@@ -55,6 +55,55 @@ Function Get-SecurityTxtFile {
 	}
 
 	Return $WebRequest.Content
+}
+
+Function Save-SecurityTxtFile {
+	[Alias('ssectxt')]
+	[CmdletBinding(SupportsShouldProcess, ConfirmImpact='Low')]
+	[OutputType([Void])]
+	Param(
+		[Parameter(Mandatory, Position=0, ValueFromPipelineByPropertyName)]
+		[Alias('DomainName','Host','HostName','Name','Uri','Url')]
+		[ValidateNotNullOrEmpty()]
+		[String] $Domain,
+
+		[Parameter(Mandatory, Position=1, ValueFromPipelineByPropertyName)]
+		[Alias('Path', 'FileName')]
+		[ValidateNotNullOrEmpty()]
+		[String] $OutFile,
+
+		[Switch] $Force
+	)
+
+	$SecurityTxtFile = Get-SecurityTxtFile -Domain $Domain -ErrorAction Stop
+
+	#region Does this file already exist?
+	If ((Test-Path -ItemType Leaf -Path $OutFile)) {
+		If ($Force) {
+			Write-Verbose "The file $OutFile already exists and will be overwritten!"
+		}
+		$Operation = 'Overwrite file'
+	}
+	Else {
+		$Operation = 'Create file'
+	}
+	#endregion
+
+	If ($PSCmdlet.ShouldProcess($OutFile, $Operation))
+	{
+		$Arguments = @{
+			'Force'    = $Force
+			'ItemType' = 'Leaf'
+			'Path'     = $OutFile
+			'Value'    = $SecurityTxtFile
+			'Confirm'  = $ConfirmPreference
+			'Debug'    = $DebugPreference
+			'Verbose'  = $VerbosePreferece
+			'WhatIf'   = $WhatIfPreference
+		}
+		New-Item @Arguments -ErrorAction Stop
+	}
+	Return
 }
 
 Function Test-SecurityTxtFile {
