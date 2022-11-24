@@ -71,6 +71,7 @@ FileList = @(
 	'NEWS',
 	'README.md',
 	'SecurityTxtToolkit.psd1',
+	'en-US/about_SecurityTxt.help.txt',
 	'en-US/about_SecurityTxtToolkit.help.txt',
 	'en-US/SecurityTxtToolkit-help.xml',
 	'src/SecurityTxtToolkit.psm1'
