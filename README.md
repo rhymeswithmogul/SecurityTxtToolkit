@@ -102,7 +102,7 @@ Hash: SHA512
 # <https://www.rfc-editor.org/rfc/rfc9116>
 #
 # This file was made with SecurityTxtToolkit:
-# <https://github.com/rhymeswithmogul/security-txt-toolkit>
+# <https://github.com/rhymeswithmogul/SecurityTxtToolkit>
 
 Canonical: https://contoso.com/.well-known/security.txt
 Contact: mailto:security@contoso.com

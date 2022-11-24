@@ -6,4 +6,4 @@ Only the latest version of this module receives security updates.  You should al
 
 ## Reporting a Vulnerability
 
-[Please submit an issue on GitHub.](https://github.com/rhymeswithmogul/security-txt-toolkit/)
+[Please submit an issue on GitHub.](https://github.com/rhymeswithmogul/SecurityTxtToolkit/)

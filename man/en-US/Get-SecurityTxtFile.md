@@ -1,7 +1,7 @@
 ---
 external help file: SecurityTxtToolkit-help.xml
 Module Name: SecurityTxtToolkit
-online version: https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/man/en-US/Get-SecurityTxtFile.md
+online version: https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/man/en-US/Get-SecurityTxtFile.md
 schema: 2.0.0
 ---
 
@@ -59,5 +59,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Test-SecurityTxtFile](Test-SecurityTxtFile)
-[GitHub](https://github.com/rhymeswithmogul/security-txt-toolkit)
+[GitHub](https://github.com/rhymeswithmogul/SecurityTxtToolkit)
 [RFC 9116: A File Format to Aid in Security Vulnerability Disclosure](https://www.rfc-editor.org/rfc/rfc9116)

@@ -86,10 +86,10 @@ PrivateData = @{
         Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty', 'bounty', 'gpg')
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/LICENSE'
+        LicenseUri = 'https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/rhymeswithmogul/security-txt-toolkit'
+        ProjectUri = 'https://github.com/rhymeswithmogul/SecurityTxtToolkit'
 
         # A URL to an icon representing this module.
         #IconUri = ''

@@ -1,5 +1,5 @@
 #Requires -Version 5.1
-New-Variable -Scope 'Script' -Name 'UserAgent' -Option 'Constant' -Value 'SecurityTxtToolkit/1.3.0 (https://github.com/rhymeswithmogul/security-txt-toolkit)'
+New-Variable -Scope 'Script' -Name 'UserAgent' -Option 'Constant' -Value 'SecurityTxtToolkit/1.3.0 (https://github.com/rhymeswithmogul/SecurityTxtToolkit)'
 
 Function Get-SecurityTxtFile {
 	[Alias('gsectxt')]
@@ -371,7 +371,7 @@ Function New-SecurityTxtFile {
 		'# <https://www.rfc-editor.org/rfc/rfc9116>'
 		'#',
 		'# This file was made with SecurityTxtToolkit:',
-		'# <https://github.com/rhymeswithmogul/security-txt-toolkit>',
+		'# <https://github.com/rhymeswithmogul/SecurityTxtToolkit>',
 		''
 	)
 

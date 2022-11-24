@@ -1,7 +1,7 @@
 ---
 external help file: SecurityTxtToolkit-help.xml
 Module Name: SecurityTxtToolkit
-online version: https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/man/en-US/Test-SecurityTxtFile.md
+online version: https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/man/en-US/Test-SecurityTxtFile.md
 schema: 2.0.0
 ---
 
@@ -111,5 +111,5 @@ To verify a clear-signed file, GnuPG must be installed on your computer and be a
 
 [Get-SecurityTxtFile](Get-SecurityTxtFile)
 [New-SecurityTxtFile](New-SecurityTxtFile)
-[GitHub](https://github.com/rhymeswithmogul/security-txt-toolkit)
+[GitHub](https://github.com/rhymeswithmogul/SecurityTxtToolkit)
 [RFC 9116: A File Format to Aid in Security Vulnerability Disclosure](https://www.rfc-editor.org/rfc/rfc9116)

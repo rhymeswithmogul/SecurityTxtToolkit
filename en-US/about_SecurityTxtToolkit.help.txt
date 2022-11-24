@@ -132,7 +132,7 @@ EXAMPLES
         # <https://datatracker.ietf.org/doc/html/draft-foudil-securitytxt-12>
         #
         # This file was made with SecurityTxtToolkit:
-        # <https://github.com/rhymeswithmogul/security-txt-toolkit>
+        # <https://github.com/rhymeswithmogul/SecurityTxtToolkit>
 
         Canonical: https://contoso.com/.well-known/security.txt
         Contact: mailto:security@contoso.com
@@ -179,7 +179,7 @@ SEE ALSO
 
     This module is in no way affiliated with them or the project. But, if you'd
     like to contribute to its development, it's on GitHub:
-    https://github.com/rhymeswithmogul/security-txt-toolkit
+    https://github.com/rhymeswithmogul/SecurityTxtToolkit
 
 KEYWORDS
 - RFC 9116

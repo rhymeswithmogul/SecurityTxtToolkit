@@ -80,7 +80,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/man/en-US/Get-SecurityTxtFile.md</maml:uri>
+        <maml:uri>https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/man/en-US/Get-SecurityTxtFile.md</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Test-SecurityTxtFile</maml:linkText>
@@ -88,7 +88,7 @@
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>GitHub</maml:linkText>
-        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit</maml:uri>
+        <maml:uri>https://github.com/rhymeswithmogul/SecurityTxtToolkit</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>RFC 9116: A File Format to Aid in Security Vulnerability Disclosure</maml:linkText>
@@ -461,7 +461,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/man/en-US/New-SecurityTxtFile.md</maml:uri>
+        <maml:uri>https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/man/en-US/New-SecurityTxtFile.md</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-SecurityTxtFile</maml:linkText>
@@ -473,7 +473,7 @@
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>GitHub</maml:linkText>
-        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit</maml:uri>
+        <maml:uri>https://github.com/rhymeswithmogul/SecurityTxtToolkit</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>RFC 9116: A File Format to Aid in Security Vulnerability Disclosure</maml:linkText>
@@ -627,7 +627,7 @@
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit/blob/main/man/en-US/Test-SecurityTxtFile.md</maml:uri>
+        <maml:uri>https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/man/en-US/Test-SecurityTxtFile.md</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-SecurityTxtFile</maml:linkText>
@@ -639,7 +639,7 @@
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>GitHub</maml:linkText>
-        <maml:uri>https://github.com/rhymeswithmogul/security-txt-toolkit</maml:uri>
+        <maml:uri>https://github.com/rhymeswithmogul/SecurityTxtToolkit</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>RFC 9116: A File Format to Aid in Security Vulnerability Disclosure</maml:linkText>
