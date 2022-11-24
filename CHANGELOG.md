@@ -1,7 +1,8 @@
 # SecurityTxtToolkit change log
 
 ## Not yet released
--  Add a new cmdlet, `Save-SecurityTxtFile`, to simply download a "security.txt" file.
+-  Added a new cmdlet, `Save-SecurityTxtFile`, to simply download a "security.txt" file.
+-  Added a new cmdlet, `Find-SecurityTxtFile`, to locate a website's "security.txt" file, to ensure that it is in the correct well-known location instead of the legacy one.
 -  Include RFC 9116 in here as `about_SecurityTxt`.
 
 ## Version 1.3.1 (November 23, 2022) -- I had a busy day.

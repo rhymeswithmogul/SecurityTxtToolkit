@@ -1,7 +1,7 @@
 ---
 external help file: SecurityTxtToolkit-help.xml
 Module Name: SecurityTxtToolkit
-online version:
+online version: https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/man/en-US/Save-SecurityTxtFile.md
 schema: 2.0.0
 ---
 
@@ -138,6 +138,7 @@ This cmdlet generates no output to the terminal or pipeline.
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-SecurityTxtFile]()
 [Test-SecurityTxtFile]()
 [about_SecurityTxtToolkit]()

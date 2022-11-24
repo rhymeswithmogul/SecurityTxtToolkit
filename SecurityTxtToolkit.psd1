@@ -46,7 +46,8 @@ FunctionsToExport = @(
 	'Test-SecurityTxtFile',
 	'New-SecurityTxtFile',
 	'Get-SecurityTxtFile',
-	'Save-SecurityTxtFile'
+	'Save-SecurityTxtFile',
+	'Find-SecurityTxtFile'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -61,7 +62,9 @@ AliasesToExport = @(
 	'nsectxt',
 	'ssectxt',
 	'tsectxt',
-	'gsectxt'
+	'gsectxt',
+	'fsectxt',
+	'Search-SecurityTxtFile'
 )
 
 # List of all files packaged with this module

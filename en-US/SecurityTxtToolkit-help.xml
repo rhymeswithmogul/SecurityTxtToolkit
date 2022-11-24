@@ -2,6 +2,107 @@
 <helpItems schema="maml" xmlns="http://msh">
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Find-SecurityTxtFile</command:name>
+      <command:verb>Find</command:verb>
+      <command:noun>SecurityTxtFile</command:noun>
+      <maml:description>
+        <maml:para>Locates a website's "security.txt" file.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet will check and see where a website's "security.txt" file is.  The RFC calls for it to be in the /.well-known folder, but some draft implementations may have the file in the root folder instead.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Find-SecurityTxtFile</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="DomainName, Host, HostName, Name, Uri, Url">
+          <maml:name>Domain</maml:name>
+          <maml:description>
+            <maml:para>The domain to check for a "security.txt" file.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="DomainName, Host, HostName, Name, Uri, Url">
+        <maml:name>Domain</maml:name>
+        <maml:description>
+          <maml:para>The domain to check for a "security.txt" file.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>One or more domains.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Uri</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>The URI of the file.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>This cmdlet will attempt to fetch the "security.txt" file via unsecured HTTP, in violation of the specification.  This will only be for testing purposes, and it will print a very visible warning if the file is not available over HTTPS.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Find-SecurityTxtFile github.com
+https://github.com/.well-known/security.txt</dev:code>
+        <dev:remarks>
+          <maml:para>Locates GitHub's "security.txt" file.  In their case, they have it in the correct location.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/man/en-US/Find-SecurityTxtFile.md</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-SecurityTxtFile</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Save-SecurityTxtFile</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Test-SecurityTxtFile</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>about_SecurityTxtToolkit</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Get-SecurityTxtFile</command:name>
       <command:verb>Get</command:verb>
       <command:noun>SecurityTxtFile</command:noun>
@@ -10,7 +111,7 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>This cmdlet fetches a domain's "security.txt" file from the well-known location, as well as from the legacy /security.txt location.  For testing purposes, it can also fetch over HTTP, but the user will be warned.  No post-processing is done on the file.</maml:para>
+      <maml:para>This cmdlet fetches a domain's "security.txt" file from the well-known location, as well as from the legacy /security.txt location.  For testing purposes, it can also fetch over HTTP, but the user will be warned.  No post-processing is done on the file, and it is displayed on the screen.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -49,7 +150,7 @@
           <maml:name>System.String</maml:name>
         </dev:type>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>One or more domain names.</maml:para>
         </maml:description>
       </command:inputType>
     </command:inputTypes>
@@ -59,7 +160,7 @@
           <maml:name>System.String</maml:name>
         </dev:type>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>A website's "security.txt" file is shown on the screen, and can be passed down the pipeline.</maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>
@@ -667,6 +768,10 @@
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/man/en-US/Save-SecurityTxtFile.md</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-SecurityTxtFile</maml:linkText>
         <maml:uri></maml:uri>

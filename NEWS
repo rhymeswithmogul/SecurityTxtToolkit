@@ -1,7 +1,11 @@
-Not yet released
-----------------
+Version 1.4.0 -- Not yet released
+---------------------------------
 The new Save-SecurityTxtFile cmdlet will allow you to download a website's
 "security.txt" file.
+
+The new Find-SecurityTxtFile cmdlet will let you find a website's "security.txt"
+file, on the off-chance they might have it in the legacy location (/) instead of
+the well-known (/.well-known) location.
 
 What is a "security.txt" file anyway?  You can read the full specification by
 typing in:  Get-Help about_SecurityTxt
