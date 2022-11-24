@@ -70,47 +70,19 @@ Function Get-SecurityTxtFile {
 	# Below are the parameters we will be using for Invoke-WebRequest.
 	$Params = @{
 		'Method'          = 'GET'
+		'Uri'             = (Find-SecurityTxtFile -Domain $Domain)
 		'UseBasicParsing' = $true
 		'UserAgent'       = $script:UserAgent
 	}
 
-	$WebRequest = $null
-	ForEach ($Uri in @(
-		"https://$Domain/.well-known/security.txt",
-		"https://$Domain/security.txt",
-		"http://$Domain/.well-known/security.txt",
-		"http://$Domain/security.txt")
-	) {
-		Write-Verbose "Downloading $Uri"
-		$WebRequest = Invoke-WebRequest @Params -Uri $Uri -ErrorAction SilentlyContinue
-		If ($null -ne $WebRequest -and $WebRequest.StatusCode -eq 200) {
-			Break
-		}
-	}
-	If (-Not $WebRequest -Or $WebRequest.StatusCode -NotLike '2*') {
-		Write-Error -Message "No `"security.txt`" file was found at $Domain."
-		Return $null
-	}
+	Write-Verbose "Downloading $Uri"
+	$WebRequest = Invoke-WebRequest @Params -Uri $Uri -ErrorAction SilentlyContinue
 
-	If ($WebRequest.BaseResponse.RequestMessage.RequestUri.Scheme -eq 'http') {
-		Write-Warning -Message "The `"security.txt`" file for $Domain could not be downloaded via HTTPS."
+	If ($null -ne $WebRequest -and $WebRequest.StatusCode -eq 200) {
+		Return $WebRequest.Content
 	}
-
-	If ($WebRequest.BaseResponse.RequestMessage.RequestUri.AbsolutePath -eq 'security.txt') {
-		Write-Warning -Message "The `"security.txt`" file for $Domain was found in the root folder, but not in the .well-known folder."
-	}
-
-	# Check to make sure this file was served via HTTP 1.0 or higher.
-	If ($WebRequest.RawContent.Substring(0,6) -Cne 'HTTP/1') {
-		Write-Warning -Message "The `"security.txt`" file for $Domain was not downloaded by HTTP 1.0 or newer."
-	}
-
-	# Check to make sure that this file has the correct content type.
-	If ($WebRequest.Headers.'Content-Type' -NotMatch 'text\/plain(;\s*charset=[Uu][Tt][Ff]-8)?') {
-		Write-Warning -Message "The `"security.txt`" file for $Domain was served with the incorrect MIME type."
-	}
-
-	Return $WebRequest.Content
+	Write-Error "The `"security.txt`" file at $Uri could not be downloaded."
+	Return $null
 }
 
 Function Save-SecurityTxtFile {
@@ -212,6 +184,9 @@ Function Test-SecurityTxtFile {
 			'UserAgent'       = $script:UserAgent
 		}
 
+		# We are duplicating much of the code inside Find-SecurityTxtFile and
+		# Get-SecurityTxtFile.  However, some warnings should be treated as
+		# errors, and we do need to keep track of that state as we go.
 		$WebRequest = $null
 		ForEach ($Uri in @(
 			"https://$Domain/.well-known/security.txt",

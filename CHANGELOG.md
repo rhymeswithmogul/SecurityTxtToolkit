@@ -4,6 +4,7 @@
 -  Added a new cmdlet, `Save-SecurityTxtFile`, to simply download a "security.txt" file.
 -  Added a new cmdlet, `Find-SecurityTxtFile`, to locate a website's "security.txt" file, to ensure that it is in the correct well-known location instead of the legacy one.
 -  Include RFC 9116 in here as `about_SecurityTxt`.
+-  Code cleanup.
 
 ## Version 1.3.1 (November 23, 2022) -- I had a busy day.
 -  Fixed a bug preventing this module from working on Windows PowerShell 5.1.  The `[HTTPWebRequest].BaseResponse.IsSuccessStatusCode` property was not supported when running under the .NET Framework.

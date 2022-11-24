@@ -15,7 +15,7 @@ RootModule = 'src/SecurityTxtToolkit.psm1'
 ModuleVersion = '1.4.0'
 
 # Supported PSEditions
-CompatiblePSEditions = @('Desktop', 'Core')
+CompatiblePSEditions = @('Core', 'Desktop')
 
 # ID used to uniquely identify this module
 GUID = '151cd72c-ea6c-42a7-8db4-0adde7f7a7c1'
@@ -43,11 +43,11 @@ RequiredModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @(
-	'Test-SecurityTxtFile',
-	'New-SecurityTxtFile',
+	'Find-SecurityTxtFile',
 	'Get-SecurityTxtFile',
+	'New-SecurityTxtFile',
 	'Save-SecurityTxtFile',
-	'Find-SecurityTxtFile'
+	'Test-SecurityTxtFile'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -58,13 +58,13 @@ VariablesToExport = ''
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @(
+	'Search-SecurityTxtFile',
 	'Set-SecurityTxtFile',
+	'fsectxt',
+	'gsectxt',
 	'nsectxt',
 	'ssectxt',
-	'tsectxt',
-	'gsectxt',
-	'fsectxt',
-	'Search-SecurityTxtFile'
+	'tsectxt'
 )
 
 # List of all files packaged with this module
