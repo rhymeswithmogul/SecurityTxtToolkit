@@ -1,0 +1,19 @@
+name: Run Pester tests
+on: push
+
+jobs:
+  pester-test-pwsh:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name:  Check out repository
+        uses:  actions/checkout@v3
+      - name:  Run Pester tests (PowerShell)
+        shell: pwsh
+        run:   |
+          Write-Output "Testing with $($PSVersionTable.PSVersion)."
+          Set-PSRepository 'PSGallery' -InstallationPolicy 'Trusted'
+          Install-Module -Name 'Pester' -Confirm:$false -Force
+          Invoke-Pester -Name 'SecurityTxtToolkit.Tests.ps1' -PassThru
