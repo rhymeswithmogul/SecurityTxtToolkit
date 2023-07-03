@@ -1,9 +1,3 @@
 # Security Policy
 
-## Supported Versions
-
-Only the latest version of this module receives security updates.  You should always keep it up to date by running `Update-Module SecurityTxtToolkit` or manually downloading the latest version.
-
-## Reporting a Vulnerability
-
-[Please submit an issue on GitHub.](https://github.com/rhymeswithmogul/SecurityTxtToolkit/)
+For security bugs that are too sensitive to report publicly, please email me at [colin@colincogle.name](mailto:colin@colincogle.name).  *Please* encrypt your content with [the PGP key 0xCEFEEDFC](https://colincogle.name/pgp/colin@colincogle.name.asc).
