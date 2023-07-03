@@ -1,4 +1,4 @@
-[![PowerShell Gallery Version (including pre-releases)](https://img.shields.io/powershellgallery/v/SecurityTxtToolkit?include_prereleases)](https://powershellgallery.com/packages/SecurityTxtToolkit/) [![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/SecurityTxtToolkit)](https://powershellgallery.com/packages/v/SecurityTxtToolkit)
+[![PowerShell Gallery Version (including pre-releases)](https://img.shields.io/powershellgallery/v/SecurityTxtToolkit?include_prereleases)](https://powershellgallery.com/packages/SecurityTxtToolkit/) [![PowerShell Gallery](https://img.shields.io/powershellgallery/dt/SecurityTxtToolkit)](https://powershellgallery.com/packages/v/SecurityTxtToolkit) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/16e09f22dcf9463e8e6ceb5a187432f2)](https://app.codacy.com/gh/rhymeswithmogul/SecurityTxtToolkit/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 # SecurityTxtToolkit
 
