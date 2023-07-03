@@ -126,7 +126,7 @@ Function Save-SecurityTxtFile {
 			'Value'    = $SecurityTxtFile
 			'Confirm'  = $ConfirmPreference
 			'Debug'    = $DebugPreference
-			'Verbose'  = $VerbosePreferece
+			'Verbose'  = $VerbosePreference
 			'WhatIf'   = $WhatIfPreference
 		}
 		New-Item @Arguments -ErrorAction Stop
