@@ -374,7 +374,7 @@ Function Test-SecurityTxtFile {
 
 			$SigningProcess = @{
 				'FilePath' = $GnuPGApp.Source
-				'ArgumentList' = '--verify'
+				'ArgumentList' = @('--verify', '--status-fd=2') # note =2 will per default put the extra info into STDERR
 				'LoadUserProfile' = $true	# to use the user's $env:GNUPGHOME
 				'RedirectStandardInput'  = $VerifyStdinFile
 				'RedirectStandardError'  = $VerifyStderrFile
@@ -386,18 +386,26 @@ Function Test-SecurityTxtFile {
 			# On my system, `gpg --verify` emits to stderr.  Not sure why.
 			# Just in case it emits to stdout on your system, we'll pull from
 			# the stdout file in case stderr is blank.
-			$VerifyResults = Get-Content $VerifyStderrFile
+			$VerifyResults = Get-Content $VerifyStderrFile -Raw
 			Write-Debug "Error stream from gpg:  $VerifyResults"
 			If ($null -eq $VerifyResults) {
-				$VerifyResults = Get-Content $VerifyStdoutFile
+				$VerifyResults = Get-Content $VerifyStdoutFile -Raw
 				Write-Debug "Error stream null.  Switching to output stream:  $VerifyResults"
 			}
 
-			$Return.IsSigned = $null -ne (Select-String -InputObject $VerifyResults -Pattern 'signature from')
+			$Return.IsSigned = $VerifyResults -Match '\[GNUPG\:\] (?:NEW|GOOD)SIG'
 			If ($Return.IsSigned) {
-				$Return.IsSignedBy = ($VerifyResults -Replace 'gpg:\s*','')
+				# The pattern constructs itself as follows:
+				# '\[GNUPG\:\] ' The GNUPG status-fd preamble
+				# '(?:NEW|GOOD)SIG' Either gnupg has a matching key in the keyring then GOODSIG else NEWSIG
+				# '(.*)' Signer
+				$Pattern = '\[GNUPG\:\] (?:NEW|GOOD|BAD)SIG (.*)'
+				$Return.IsSignedBy = (Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups?[1].Value
+
+				$Pattern = '\[GNUPG\:\] ERRSIG ([0-9A-F]{16})'
+				$Return.IsSignedBy ??= "unknown key $((Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups?[1].Value)"
 			}
-			$Return.HasGoodSignature = $null -ne (Select-String -InputObject $VerifyResults -Pattern 'good signature from')
+			$Return.HasGoodSignature = $VerifyResults -match '\[GNUPG\:\] (?:ERR|VALID)SIG'
 		}
 		Finally {
 			Remove-Item -Path $VerifyStdinFile  -Force -ErrorAction Ignore
