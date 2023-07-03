@@ -70,10 +70,10 @@ Accept wildcard characters: False
 This field indicates an address that researchers should use for reporting security vulnerabilities such as an email address, a phone number and/or a web page with contact information.
 
 You may use any URI scheme here except for `http:`.  Some examples include:
- - `mailto:` for an email address,
- - `tel:` for a phone number,
- - `https:` for a contact form or other web page, or
- - `MSTeams:` for starting a private Teams chat.
+-   `mailto:` for an email address,
+-   `tel:` for a phone number,
+-   `https:` for a contact form or other web page, or
+-   `MSTeams:` for starting a private Teams chat.
 
 The precedence SHOULD be in listed order.  The first occurrence is the preferred method of contact.
 
@@ -109,9 +109,9 @@ Accept wildcard characters: False
 This field indicates an encryption key that security researchers should use for encrypted communication.  Keys MUST NOT appear in this field - instead the value of this field MUST be a URI pointing to a location where the key can be retrieved.
 
 URI schemes commonly used here include:
- - `https:` for linking to Web content,
- - `dns:` for serving OPENPGPKEY or other DNS records, and
- - `openpgp4fpr:` for embedding a key's fingerprint.
+-   `https:` for linking to Web content,
+-   `dns:` for serving OPENPGPKEY or other DNS records, and
+-   `openpgp4fpr:` for embedding a key's fingerprint.
 
 ```yaml
 Type: Uri[]
