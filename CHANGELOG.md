@@ -3,6 +3,7 @@
 ## Not yet released
 -   Added a new cmdlet, `Save-SecurityTxtFile`, to simply download a "security.txt" file.
 -   Added a new cmdlet, `Find-SecurityTxtFile`, to locate a website's "security.txt" file, to ensure that it is in the correct well-known location instead of the legacy one.
+-   Add Pester tests.
 -   Changed how this module interfaces with `gpg`, so that it's more predictable on non-English systems.  Thank you to [Johannes Schöpp](https://github.com/jschpp) for [his great bug report, #3, and pull request, #4](https://github.com/rhymeswithmogul/SecurityTxtToolkit/pull/4).
 -   Improved detection of bad signatures.
 -   Remove extra spaces when a "security.txt" file has multiple `Preferred-Languages`.
