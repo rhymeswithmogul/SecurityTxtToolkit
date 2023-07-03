@@ -7,6 +7,9 @@ The new Find-SecurityTxtFile cmdlet will let you find a website's "security.txt"
 file, on the off-chance they might have it in the legacy location (/) instead of
 the well-known (/.well-known) location.
 
+This module can better interface with a locally-installed copy of GnuPG thanks
+to a pull request submitted by Johannes Schöpp!  Follow him on GitHub (jschpp).
+
 What is a "security.txt" file anyway?  You can read the full specification by
 typing in:  Get-Help about_SecurityTxt
 

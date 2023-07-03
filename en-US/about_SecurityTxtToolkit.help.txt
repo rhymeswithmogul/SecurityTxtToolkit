@@ -164,6 +164,13 @@ NOTE
     Installing that and creating a PGP keypair and/or keychain is beyond the
     scope of this contextual help and left as an exercise for the PowerSheller.
 
+    Note that SecurityTxtToolkit and GnuPG disagree on what constitutes a "good"
+    signature.  SecurityTxtToolkit considers a signature to be "good" if it is a
+    cryptographically valid signature, while GnuPG considers the same signature
+    "good" if and only if the signer's key is present in your keyring.  However,
+    anyone looking to fully verify a signed "security.txt" file should download
+    and import the signer's key as a matter of good practice.
+
 TROUBLESHOOTING NOTE
     This module complies with RFC 9116.
 
