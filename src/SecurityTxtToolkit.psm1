@@ -393,16 +393,19 @@ Function Test-SecurityTxtFile {
 				Write-Debug "Error stream null.  Switching to output stream:  $VerifyResults"
 			}
 
-			$Return.IsSigned = $VerifyResults -match '\[GNUPG\:\] NEWSIG'
+			$Return.IsSigned = $VerifyResults -Match '\[GNUPG\:\] (?:NEW|GOOD)SIG'
 			If ($Return.IsSigned) {
 				# The pattern constructs itself as follows:
 				# '\[GNUPG\:\] ' The GNUPG status-fd preamble
 				# '(?:NEW|GOOD)SIG' Either gnupg has a matching key in the keyring then GOODSIG else NEWSIG
 				# '(.*)' Signer
-				$Pattern = '\[GNUPG\:\] (?:NEW|GOOD)SIG (.*)'
-				$Return.IsSignedBy =  (Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups[1].Value
+				$Pattern = '\[GNUPG\:\] (?:NEW|GOOD|BAD)SIG (.*)'
+				$Return.IsSignedBy = (Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups?[1].Value
+
+				$Pattern = '\[GNUPG\:\] ERRSIG ([0-9A-F]{16})'
+				$Return.IsSignedBy ??= "unknown key $((Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups?[1].Value)"
 			}
-			$Return.HasGoodSignature = $VerifyResults -match '\[GNUPG\:\] VALIDSIG'
+			$Return.HasGoodSignature = $VerifyResults -match '\[GNUPG\:\] (?:ERR|VALID)SIG'
 		}
 		Finally {
 			Remove-Item -Path $VerifyStdinFile  -Force -ErrorAction Ignore
