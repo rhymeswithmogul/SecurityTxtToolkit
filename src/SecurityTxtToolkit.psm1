@@ -398,14 +398,18 @@ Function Test-SecurityTxtFile {
 
 			$Return.IsSigned = $VerifyResults -Match '\[GNUPG\:\] (?:NEW|GOOD)SIG'
 			If ($Return.IsSigned) {
-				# The pattern constructs itself as follows:
-				# '\[GNUPG\:\] ' The GNUPG status-fd preamble
-				# '(?:NEW|GOOD)SIG' Either gnupg has a matching key in the keyring then GOODSIG else NEWSIG
-				# '(.*)' Signer
-				$Pattern   = '\[GNUPG\:\] (?:NEW|GOOD|BAD)SIG (.*)'
-				$Return.IsSignedBy = (Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups[1].Value
-
-				If ($null -eq $Return.IsSignedBy) {
+				Try {
+					# The pattern constructs itself as follows:
+					# '\[GNUPG\:\] ' The GNUPG status-fd preamble
+					# '(?:NEW|GOOD)SIG' Either gnupg has a matching key in the keyring then GOODSIG else NEWSIG
+					# '(.*)' Signer
+					$Pattern = '\[GNUPG\:\] (?:NEW|GOOD|BAD)SIG (.*)'
+					$Return.IsSignedBy = (Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups[1].Value
+				}
+				Catch {
+					# This pattern is the same as above.  If nothing was captured
+					# above, then ERRSIG will show us the cryptographically-correct
+					# signature from an unknown signer.
 					$Pattern = '\[GNUPG\:\] ERRSIG ([0-9A-F]{16})'
 					$Return.IsSignedBy = "unknown key $((Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups[1].Value)"
 				}
