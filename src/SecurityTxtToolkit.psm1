@@ -75,13 +75,13 @@ Function Get-SecurityTxtFile {
 		'UserAgent'       = $script:UserAgent
 	}
 
-	Write-Verbose "Downloading $Uri"
-	$WebRequest = Invoke-WebRequest @Params -Uri $Uri -ErrorAction SilentlyContinue
+	Write-Verbose "Downloading $($Params.Uri)"
+	$WebRequest = Invoke-WebRequest @Params -ErrorAction SilentlyContinue
 
 	If ($null -ne $WebRequest -and $WebRequest.StatusCode -eq 200) {
 		Return $WebRequest.Content
 	}
-	Write-Error "The `"security.txt`" file at $Uri could not be downloaded."
+	Write-Error "The `"security.txt`" file at $($Params.Uri) could not be downloaded."
 	Return $null
 }
 

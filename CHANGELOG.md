@@ -6,6 +6,7 @@
 -   Changed how this module interfaces with `gpg`, so that it's more predictable on non-English systems.  Thank you to [Johannes Schöpp](https://github.com/jschpp) for [his great bug report, #3, and pull request, #4](https://github.com/rhymeswithmogul/SecurityTxtToolkit/pull/4).
 -   Improved detection of bad signatures.
 -   Include RFC 9116 in here as `about_SecurityTxt`.
+-   Fixed a bug where `Get-SecurityTxtFile` might attempt to fetch a file from a null URL.
 -   Code cleanup.
 
 ## Version 1.3.1 (November 23, 2022) -- I had a busy day.
