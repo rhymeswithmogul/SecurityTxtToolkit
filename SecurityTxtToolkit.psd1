@@ -24,7 +24,7 @@ GUID = '151cd72c-ea6c-42a7-8db4-0adde7f7a7c1'
 Author = 'Colin Cogle <colin@colincogle.name>'
 
 # Copyright statement for this module
-Copyright = '(c) 2021-2022 Colin Cogle.  All rights reserved.  Licensed under the AGPLv3 or newer.'
+Copyright = '(c) 2021-2023 Colin Cogle.  All rights reserved.  Licensed under the AGPLv3 or newer.'
 
 # Description of the functionality provided by this module
 Description = 'Parses and creates "security.txt" files.'
@@ -87,7 +87,8 @@ PrivateData = @{
 	PSData = @{
 
 		# Tags applied to this module. These help with module discovery in online galleries.
-		Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty', 'bounty', 'gpg')
+		Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty',
+		         'bounty', 'gpg', 'Windows', 'macOS', 'Linux')
 
 		# A URL to the license for this module.
 		LicenseUri = 'https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/LICENSE'
