@@ -106,7 +106,7 @@ Function Save-SecurityTxtFile {
 	$SecurityTxtFile = Get-SecurityTxtFile -Domain $Domain -ErrorAction Stop
 
 	#region Does this file already exist?
-	If ((Test-Path -ItemType Leaf -Path $OutFile)) {
+	If ((Test-Path -PathType Leaf -Path $OutFile)) {
 		If ($Force) {
 			Write-Verbose "The file $OutFile already exists and will be overwritten!"
 		}
@@ -121,7 +121,7 @@ Function Save-SecurityTxtFile {
 	{
 		$Arguments = @{
 			'Force'    = $Force
-			'ItemType' = 'Leaf'
+			'ItemType' = 'File'
 			'Path'     = $OutFile
 			'Value'    = $SecurityTxtFile
 			'Confirm'  = $ConfirmPreference
