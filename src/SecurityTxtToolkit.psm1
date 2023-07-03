@@ -399,11 +399,13 @@ Function Test-SecurityTxtFile {
 				# '\[GNUPG\:\] ' The GNUPG status-fd preamble
 				# '(?:NEW|GOOD)SIG' Either gnupg has a matching key in the keyring then GOODSIG else NEWSIG
 				# '(.*)' Signer
-				$Pattern = '\[GNUPG\:\] (?:NEW|GOOD|BAD)SIG (.*)'
-				$Return.IsSignedBy = (Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups?[1].Value
+				$Pattern   = '\[GNUPG\:\] (?:NEW|GOOD|BAD)SIG (.*)'
+				$Return.IsSignedBy = (Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups[1].Value
 
-				$Pattern = '\[GNUPG\:\] ERRSIG ([0-9A-F]{16})'
-				$Return.IsSignedBy ??= "unknown key $((Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups?[1].Value)"
+				If ($null -eq $Return.IsSignedBy) {
+					$Pattern = '\[GNUPG\:\] ERRSIG ([0-9A-F]{16})'
+					$Return.IsSignedBy = "unknown key $((Select-String -InputObject $VerifyResults -Pattern $Pattern).Matches.Groups[1].Value)"
+				}
 			}
 			$Return.HasGoodSignature = $VerifyResults -match '\[GNUPG\:\] (?:ERR|VALID)SIG'
 		}
