@@ -335,7 +335,10 @@ Function Test-SecurityTxtFile {
 						Write-Error -Message 'The Preferred-Languages field was specified more than once.'
 						$Return.IsValid = $false
 					}
-					$Return.PreferredLanguages += $FieldValue -Split ','
+
+					$FieldValue -Split ',\s*' | ForEach-Object {
+						$Return.PreferredLanguages += $_
+					}
 				}
 				
 				'Policy' {
