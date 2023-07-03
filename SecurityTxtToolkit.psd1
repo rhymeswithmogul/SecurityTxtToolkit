@@ -89,8 +89,7 @@ PrivateData = @{
 	PSData = @{
 
 		# Tags applied to this module. These help with module discovery in online galleries.
-		Tags = @('foudil', 'security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty',
-		         'bounty', 'gpg', 'Windows', 'macOS', 'Linux')
+		Tags = @('foudil', 'Security', 'security-txt', 'securitytxt', 'security.txt', 'txt', 'RFC9116', 'bugbounty', 'bounty', 'gpg', 'hacker', 'hacking', 'research', 'SecOps', 'Windows', 'macOS', 'Linux', 'IIS', 'Test')
 
 		# A URL to the license for this module.
 		LicenseUri = 'https://github.com/rhymeswithmogul/SecurityTxtToolkit/blob/main/LICENSE'
@@ -102,7 +101,17 @@ PrivateData = @{
 		#IconUri = ''
 
 		# ReleaseNotes of this module
-		ReleaseNotes = 'Introducing Get-SecurityTxtFile -- fetch a file without testing it.'
+		ReleaseNotes = @'
+-   Added a new cmdlet, Save-SecurityTxtFile, to simply download a "security.txt" file.
+-   Added a new cmdlet, Find-SecurityTxtFile, to locate a website's "security.txt" file, to ensure that it is in the correct well-known location instead of the legacy one.
+-   Added Pester tests.
+-   Changed how this module interfaces with `gpg`, so that it's more predictable on non-English systems.  Thank you to Johannes Schöpp for his great bug report and pull request.
+-   Improved detection of bad signatures.
+-   Removed extra spaces when a "security.txt" file has multiple Preferred-Languages.
+-   Included RFC 9116 in here as about_SecurityTxt.
+-   Fixed a bug where Get-SecurityTxtFile might attempt to fetch a file from a null URL.
+-   Code cleanup.
+'@
 
 		# Prerelease string of this module
 		#Prerelease = ''
